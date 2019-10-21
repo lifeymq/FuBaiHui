@@ -6,4 +6,5 @@ package com.example.lenovo.fubaihui.frame;
 
 public class ApiConfig {
     public static final int GET_PERSON_RANKING_RESULT_TEST = 1;
+    public static final int GET_FRANCHISEE=21;
 }
