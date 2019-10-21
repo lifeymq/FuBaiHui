@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="gray">#C8C5C5</color>
+    <color name="red">#E34435</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="light_grey">#EEECEC</color>
+    <color name="paldRed">#F9BBBB</color>
+    <color name="app_theme_color">#E45040</color>
+    <color name="bottom_bar_bg">#EDEBEC</color>
+    <color name="tab_bg">#F6F2A8</color>
+    <color name="default_color">#EEEEEE</color>
+    <color name="white">#FFFFFF</color>
+    <color name="kit_pop_back">#333333</color>
+    <color name="kit_transparent">#00000000</color>
+    <color name="kit_title">#E4503F</color>
+    <color name="kit_white">#ffffffff</color>
+    <color name="kit_dark_gray">#333333</color>
+    <color name="kit_light_gray">#AFFFFFFF</color>
+    <color name="lib_color_black_transform50">#80000000</color>
+    <color name="black_theme">#000000</color>
+    <color name="grey_first">#222222</color>
+    <color name="grey_second">#a4a4a4</color>
+    <color name="grey_loading">#868686</color>
+    <color name="red_theme">#d53d3c</color>
+    <color name="blue_theme">#3885af</color>
+    <color name="green_theme">#1AAC19</color>
+    <color name="splash_bar">#3F71CC</color>
+    <color name="popup_bg">#8f000000</color>
+    <color name="round_shape_grey_out">#E2DBDB</color>
+    <color name="round_shape_grey_int">#F9F9F9</color>
+    <color name="round_shape_red_in">#FFB9B2</color>
+    <color name="back_grey">#F9F9F9</color>
+    <color name="dark_grey">#EDEDED</color>
+    <color name="cut_line">#EBEBEB</color>
+    <!-- 透明 -->
+    <color name="half_transparent">#26000000</color>
+    <color name="label_color">#4782c4</color>
+    <color name="west_item_bg">#FFF3ED</color>
+    <color name="east_item_bg">#F7F7F7</color>
+    <color name="rank_line">#DBDBDB</color>
+    <color name="black10">#19000000</color>
+    <color name="main_color">#27d081</color>
+</resources>

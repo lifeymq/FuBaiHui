@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.cheng.fubaihui"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$supportVsersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraint"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api "com.squareup.retrofit2:retrofit:$retrofit2"
+    api "com.squareup.retrofit2:converter-gson:$retrofit2"
+    api "com.squareup.retrofit2:converter-jackson:$retrofit2"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit2"
+    api "io.reactivex.rxjava2:rxjava:$rxjava2"
+    api "io.reactivex.rxjava2:rxandroid:$rxjava2"
+    api "com.jakewharton:butterknife:$butterknife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
+    implementation files('libs/fastjson-1.2.41.jar')
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
+    implementation "com.squareup.okhttp3:logging-interceptor:$ok3log"
+    implementation project(':utils')
+
+}
