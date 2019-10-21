@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.adapters.BanViewPager;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseMvpActivity {
+public class HomeActivity extends BaseMvpActivity {
 
 
     @BindView(R.id.mytoolbar)
@@ -35,7 +37,6 @@ public class MainActivity extends BaseMvpActivity {
     BanViewPager mMyvp;
 
     private ArrayList<Fragment> fragments;
-    private FragmentManager fragmentManager;
     private MyVpFragmtAdapter adapter;
 
     @Override
@@ -50,33 +51,29 @@ public class MainActivity extends BaseMvpActivity {
 
     @Override
     public void setUp() {
-        mPresenter.getData(ApiConfig.GET_PERSON_RANKING_RESULT_TEST);
+        //mPresenter.getData(ApiConfig.GET_PERSON_RANKING_RESULT_TEST);
     }
 
     @Override
     public void onSuccess(int whichApi, Object successResult) {
-        switch (whichApi) {
+       /* switch (whichApi) {
             case ApiConfig.GET_PERSON_RANKING_RESULT_TEST:
                 TeamerRankInfo info = (TeamerRankInfo) successResult;
                 Log.e("睚眦", info.toString() + "");
                 break;
-        }
+        }*/
     }
 
 
     @Override
     public void initView() {
         super.initView();
-
         mMytoolbar.setTitle("");
-
         fragments = new ArrayList<>();
-//        ArrayList<String> titles = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new CommentFragment());
         fragments.add(new ShopFragment());
         fragments.add(new MineFragment());
-
         adapter = new MyVpFragmtAdapter(getSupportFragmentManager(), fragments);
         mMyvp.setAdapter(adapter);
         mMytab.setupWithViewPager(mMyvp);
@@ -84,7 +81,12 @@ public class MainActivity extends BaseMvpActivity {
         mMytab.getTabAt(1).setIcon(R.drawable.home_tab2).setText("商品点评");
         mMytab.getTabAt(2).setIcon(R.drawable.home_tab3).setText("购物车");
         mMytab.getTabAt(3).setIcon(R.drawable.home_tab4).setText("我的");
-
+        mMyvp.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
 //        titles.add("首页");
 //        titles.add("商品点评");

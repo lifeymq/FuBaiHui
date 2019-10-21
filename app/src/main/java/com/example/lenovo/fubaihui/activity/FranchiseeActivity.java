@@ -1,10 +1,8 @@
 package com.example.lenovo.fubaihui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.adapter.FranchiseeAdapter;
@@ -13,13 +11,11 @@ import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.FranchiseeModel;
-import com.example.lenovo.fubaihui.model.TestModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class FranchiseeActivity extends BaseMvpActivity {
 
@@ -66,6 +62,7 @@ public class FranchiseeActivity extends BaseMvpActivity {
 
                List<FranchiseeInfo.DataBean> data = franchiseeInfo.getData();
                if (data != null && data.size() > 0) {
+                  System.out.println("FranchiseeActivity:"+data.size()+"");
                   dataLists.addAll(data);
                   franchiseeAdapter.notifyDataSetChanged();
                }

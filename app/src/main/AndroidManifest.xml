@@ -41,16 +41,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+       android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.Fbh_ShopActivity"/>
+        <activity android:name=".activity.FranchiseeActivity"/>
+        <activity android:name=".activity.FranchiseeDetailsActivity"/>
+        <activity android:name=".activity.Inte_ShopActivity"/>
+        <activity android:name=".activity.MemberActivity"/>
     </application>
 
 </manifest>

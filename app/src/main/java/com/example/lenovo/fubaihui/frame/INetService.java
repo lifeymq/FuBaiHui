@@ -16,8 +16,8 @@ import retrofit2.http.POST;
 
 public interface INetService {
    //http://bkbapi.dqdgame.com/group/app/topic/list
-   @GET("group/app/topic/list")
-   Observable<TeamerRankInfo> getTopic();
+  /* @GET("group/app/topic/list")
+   Observable<TeamerRankInfo> getTopic();*/
 
    @POST("APP/Xtojoin/garage_list")
    @FormUrlEncoded
