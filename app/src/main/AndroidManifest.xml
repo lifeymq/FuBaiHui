@@ -25,26 +25,28 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
     <uses-permission android:name="android.permission.CLEAR_APP_DATA" />
-    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- 震动权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera" /> <!-- 使用照相机权限 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- 使用照相机权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
     <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
     <application
         android:name=".frame.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+       android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,6 +62,18 @@
         <activity android:name=".activity.Fbh_ShopActivity" />
         <activity android:name=".activity.FranchiseeActivity" />
         <activity android:name=".activity.FranchiseeDetailsActivity" />
-    </application>
+          <activity android:name=".mainactivity.DataActivity" />
+          <activity android:name=".mainactivity.DiscountActivity" />
+          <activity android:name=".mainactivity.SettingActivity" />
+          <activity android:name=".mainactivity.RecommendActivity" />
+          <activity android:name=".mainactivity.RecommendNumActivity" />
+          <activity android:name=".mainactivity.AddressActivity" />
+          <activity android:name=".mainactivity.WalletActivity" />
+          <activity android:name=".mainactivity.OrderActivity" />
+          <activity android:name=".mainactivity.CollectionActivity" />
+          <activity android:name=".mainactivity.FriendActivity" />
+          <activity android:name=".mainactivity.PhoneActivity" />
+          <activity android:name=".mainactivity.SettledinActivity"></activity>
+   </application>
 
 </manifest>

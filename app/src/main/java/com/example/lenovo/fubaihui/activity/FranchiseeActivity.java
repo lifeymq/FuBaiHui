@@ -38,7 +38,9 @@ public class FranchiseeActivity extends BaseMvpActivity {
       franchiseeAdapter.setOnItemClickListener(new FranchiseeAdapter.OnItemClickListener() {
          @Override
          public void onItemClickListener(int position) {
-            Intent intent = new Intent(FranchiseeActivity.this,FranchiseeDetailsActivity.class);
+            FranchiseeInfo.DataBean dataBean = dataLists.get(position);
+            Intent intent = new Intent(FranchiseeActivity.this, FranchiseeDetailsActivity.class);
+            intent.putExtra("data", dataBean);
             startActivity(intent);
          }
       });
@@ -59,13 +61,12 @@ public class FranchiseeActivity extends BaseMvpActivity {
       switch (whichApi) {
          case ApiConfig.GET_FRANCHISEE:
             FranchiseeInfo franchiseeInfo = (FranchiseeInfo) successResult;
-
-               List<FranchiseeInfo.DataBean> data = franchiseeInfo.getData();
-               if (data != null && data.size() > 0) {
-                  System.out.println("FranchiseeActivity:"+data.size()+"");
-                  dataLists.addAll(data);
-                  franchiseeAdapter.notifyDataSetChanged();
-               }
+            List<FranchiseeInfo.DataBean> data = franchiseeInfo.getData();
+            if (data != null && data.size() > 0) {
+               System.out.println("FranchiseeActivity:" + data.size() + "");
+               dataLists.addAll(data);
+               franchiseeAdapter.notifyDataSetChanged();
+            }
 
             break;
       }
