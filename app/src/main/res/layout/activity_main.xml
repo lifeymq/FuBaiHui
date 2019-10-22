@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context="com.example.lenovo.fubaihui.activity.HomeActivity">
+    android:orientation="vertical"
+    tools:context="com.example.lenovo.fubaihui.activity.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,30 +17,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorBackgroundFloating"
             android:id="@+id/mytoolbar">
 
+            <ImageView
+                android:id="@+id/ivsao"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:src="@drawable/saoyisao"
+                />
+
+
             <TextView
+                android:id="@+id/toolbartitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/dp_16"
                 android:text="首页"
                 />
+
+
         </android.support.v7.widget.Toolbar>
 
 
         <com.example.lenovo.fubaihui.adapters.BanViewPager
             android:id="@+id/myvp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:isScrollContainer="true"
             android:layout_weight="1"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/mytab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabSelectedTextColor="#99ff0000" />
+            app:tabSelectedTextColor="#99ff0000"
+            app:tabIndicatorColor="@null"
+            />
+
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
