@@ -9,10 +9,10 @@
     tools:context="com.example.lenovo.fubaihui.activity.SignActivity">
 
     <ImageView
-        android:layout_width="@dimen/dp_110"
+        android:layout_width="@dimen/dp_100"
         android:layout_gravity="center"
         android:src="@drawable/ic_fubaihui"
-        android:layout_height="@dimen/dp_110" />
+        android:layout_height="@dimen/dp_100" />
 
     <RelativeLayout
         android:layout_width="@dimen/dp_330"

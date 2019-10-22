@@ -59,12 +59,12 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_width="@dimen/dp_300"
+            android:layout_width="@dimen/dp_315"
             android:orientation="vertical"
             android:background="@drawable/modify_kuang"
-            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_8"
-            android:layout_height="@dimen/dp_81">
+            android:layout_height="@dimen/dp_82">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -75,19 +75,21 @@
                     android:id="@+id/modify_code"
                     android:layout_width="@dimen/dp_200"
                     android:hint="   请输入验证码"
-                    android:textSize="@dimen/sp_15"
+                    android:textSize="@dimen/sp_16"
                     android:background="@null"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:layout_width="@dimen/dp_1"
                     android:background="@color/cut_line"
+                    android:layout_marginLeft="@dimen/dp_5"
                     android:layout_height="@dimen/dp_26"/>
                 <TextView
                     android:id="@+id/modify_facode"
                     android:layout_width="wrap_content"
                     android:text="发送验证码"
+                    android:textColor="@color/black_theme"
                     android:textSize="@dimen/sp_15"
-                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginLeft="@dimen/dp_17"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <TextView
@@ -103,24 +105,26 @@
                     android:id="@+id/masked_password"
                     android:layout_width="@dimen/dp_270"
                     android:hint="   设置新密码"
-                    android:textSize="@dimen/sp_15"
+                    android:textSize="@dimen/sp_16"
                     android:layout_marginTop="@dimen/dp_5"
                     android:background="@null"
-                    android:password="true"
+                    android:inputType="textPassword"
                     android:layout_height="match_parent" />
-                <ImageView
+                <ToggleButton
                     android:id="@+id/modify_yan"
-                    android:src="@drawable/tv_read"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:background="@drawable/tv_read"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:textOff=""
+                    android:textOn=""/>
             </LinearLayout>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
-            android:textSize="@dimen/sp_10"
+            android:textSize="@dimen/sp_11"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_20"
             android:textColor="@color/gray"
             android:text="*新密码需含有小写字母、大写字母、数字、特殊符号的两种及以上"
             android:layout_height="wrap_content" />

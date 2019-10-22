@@ -1,13 +1,18 @@
 package com.example.lenovo.fubaihui.design;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +22,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.fubaihui.R;
+import com.example.lenovo.fubaihui.frame.ApiConfig;
 
 
-public class SmsVerifyView extends LinearLayout implements View.OnClickListener {
+public class SmsVerifyView extends LinearLayout {
     private final static int DELAY = 1000;
     private final static int CYCLE = 60;
 
@@ -92,8 +98,6 @@ public class SmsVerifyView extends LinearLayout implements View.OnClickListener 
         mPhone = findViewById(R.id.register_phone);
         mVerify = findViewById(R.id.register_code);
         mVerifyCode = findViewById(R.id.register_huocode);
-        mVerify.setOnClickListener(this);
-        mArea.setOnClickListener(this);
         mVerify.setText(getContext().getString(R.string.get_verify_code));
         mPhone.addTextChangedListener(new VerifyTextWatcher());
         disableVerify();
@@ -117,23 +121,8 @@ public class SmsVerifyView extends LinearLayout implements View.OnClickListener 
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (s != null && s.toString().length() > 10) {
-                enableVerify();
-            } else {
-                disableVerify();
-            }
 
-        }
-    }
 
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.register_code) {
-            mHandler.post(runnable);
-            if (mSmsVerifyCallback != null) mSmsVerifyCallback.smsCodeSend();
-        }else if (i == R.id.area) {
-            if (mSmsVerifyCallback != null) mSmsVerifyCallback.countryCodeOpen();
         }
     }
 
@@ -147,4 +136,5 @@ public class SmsVerifyView extends LinearLayout implements View.OnClickListener 
         void smsCodeSend();
         void countryCodeOpen();
     }
+
 }
