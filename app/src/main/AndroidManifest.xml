@@ -1,62 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lenovo.fubaihui">
+   package="com.example.lenovo.fubaihui">
 
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-    <uses-permission android:name="android.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
-    <uses-permission android:name="android.permission.CLEAR_APP_DATA" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <!-- 震动权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+   <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+   <uses-permission android:name="android.permission.INTERNET" />
+   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+   <uses-permission android:name="android.permission.READ_CALENDAR" />
+   <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+   <uses-permission android:name="android.permission.READ_SETTINGS" />
+   <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
+   <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+   <uses-permission android:name="android.permission.VIBRATE" />
+   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+   <uses-permission android:name="android.permission.WAKE_LOCK" />
+   <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+   <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+   <uses-permission android:name="android.permission.GET_TASKS" />
+   <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+   <uses-permission android:name="android.permission.CLEAR_APP_DATA" />
+   <uses-permission android:name="android.permission.BLUETOOTH" />
+   <!-- 震动权限 -->
+   <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera" />
-    <!-- 使用照相机权限 -->
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+   <uses-feature android:name="android.hardware.camera" />
+   <!-- 使用照相机权限 -->
+   <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
-    <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <application
-        android:name=".frame.MyApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-       android:usesCleartextTraffic="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+   <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
+   <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+   <uses-permission android:name="android.permission.READ_LOGS" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.Fbh_ShopActivity"/>
-        <activity android:name=".activity.FranchiseeActivity"/>
-        <activity android:name=".activity.FranchiseeDetailsActivity"/>
-        <activity android:name=".activity.Inte_ShopActivity"/>
-        <activity android:name=".activity.MemberActivity"/>
-    </application>
+   <application
+      android:name=".frame.MyApplication"
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme"
+      android:usesCleartextTraffic="true">
+      <activity android:name=".activity.HomeActivity">
+         <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
+      </activity>
+      <activity android:name=".activity.Fbh_ShopActivity" />
+      <activity android:name=".activity.FranchiseeActivity" />
+      <activity android:name=".activity.FranchiseeDetailsActivity" />
+      <activity android:name=".activity.Inte_ShopActivity" />
+      <activity android:name=".activity.MemberActivity" />
+      <activity android:name=".mainactivity.DataActivity" />
+      <activity android:name=".mainactivity.DiscountActivity" />
+      <activity android:name=".mainactivity.SettingActivity" />
+      <activity android:name=".mainactivity.RecommendActivity" />
+      <activity android:name=".mainactivity.RecommendNumActivity" />
+      <activity android:name=".mainactivity.AddressActivity" />
+      <activity android:name=".mainactivity.WalletActivity" />
+      <activity android:name=".mainactivity.OrderActivity" />
+      <activity android:name=".mainactivity.CollectionActivity" />
+      <activity android:name=".mainactivity.FriendActivity" />
+      <activity android:name=".mainactivity.PhoneActivity" />
+      <activity android:name=".mainactivity.SettledinActivity"></activity>
+   </application>
 
 </manifest>
