@@ -16,8 +16,16 @@ public class TestModel implements ICommonModel {
         NetManager manager = NetManager.getNetManager();
         switch (whichApi){
             case ApiConfig.GET_PERSON_RANKING_RESULT_TEST:
-                manager.method(manager.getNetService(Config.BASEURL).getTopic(),whichApi,presenterCallBack);
-                break;
+              // manager.method(manager.getNetService(Config.BASEURL).getTopic(),whichApi,presenterCallBack);
+            break;
+
+              case ApiConfig.POST_HOME_CHOICENESS:
+              manager.method(manager.getNetService(Config.BASEURL1).getHomeChoiceness(),whichApi,presenterCallBack);
+            break;
+
+
+
+
         }
     }
 }

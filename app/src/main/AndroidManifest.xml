@@ -40,9 +40,10 @@
     <application
         android:name=".frame.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_fubaihui"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+       android:usesCleartextTraffic="true"
+        android:roundIcon="@mipmap/ic_fubaihui"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
@@ -53,8 +54,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RegisterActivity" ></activity>
-        <activity android:name=".activity.ModifyActivity"></activity>
+        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.ModifyActivity"/>
+        <activity android:name=".activity.Fbh_ShopActivity"/>
+        <activity android:name=".activity.FranchiseeActivity"/>
+        <activity android:name=".activity.FranchiseeDetailsActivity"/>
+        <activity android:name=".activity.Inte_ShopActivity"/>
+        <activity android:name=".activity.MemberActivity"/>
     </application>
 
 </manifest>
