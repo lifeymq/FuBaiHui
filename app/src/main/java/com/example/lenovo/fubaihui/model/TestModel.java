@@ -27,6 +27,16 @@ public class TestModel implements ICommonModel {
             case ApiConfig.GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW_POP:
                 manager.method(manager.getNetService(Config.BASEURL1).getIntegral_show_pop((String) params[0]),whichApi,presenterCallBack);
                 break;
+              // manager.method(manager.getNetService(Config.BASEURL).getTopic(),whichApi,presenterCallBack);
+            break;
+
+              case ApiConfig.POST_HOME_CHOICENESS:
+              manager.method(manager.getNetService(Config.BASEURL1).getHomeChoiceness(),whichApi,presenterCallBack);
+            break;
+
+
+
+
         }
     }
 }
