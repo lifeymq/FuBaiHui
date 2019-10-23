@@ -1,28 +1,21 @@
 package com.example.lenovo.fubaihui.design;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.fubaihui.R;
-import com.example.lenovo.fubaihui.frame.ApiConfig;
 
 
 public class SmsVerifyView extends LinearLayout {

@@ -2,11 +2,6 @@ package com.example.lenovo.fubaihui.bean;
 
 public class CodeBean {
 
-    /**
-     * code : 200
-     * content : 3056
-     */
-
     private int code;
     private String content;
 

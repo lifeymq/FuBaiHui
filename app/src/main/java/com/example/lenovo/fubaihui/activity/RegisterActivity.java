@@ -3,9 +3,7 @@ package com.example.lenovo.fubaihui.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -26,10 +24,7 @@ import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
 
-import java.util.Map;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.SmsVerifyCallback{
@@ -60,7 +55,6 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
     private String password;
     private String huocode;
     private String phone;
-    private int agree = 1;
     private String content;
     private String msg;
     private int code1;

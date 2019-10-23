@@ -2,11 +2,6 @@ package com.example.lenovo.fubaihui.bean;
 
 public class RegisterBean {
 
-    /**
-     * code : 200
-     * msg : 注册成功
-     */
-
     private int code;
     private String msg;
 

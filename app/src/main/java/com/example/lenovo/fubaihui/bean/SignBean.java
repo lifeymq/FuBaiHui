@@ -37,10 +37,6 @@ public class SignBean {
     }
 
     public static class DataBean {
-        /**
-         * uid : 513
-         * user_type : 2
-         */
 
         private int uid;
         private int user_type;

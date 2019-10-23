@@ -5,13 +5,9 @@ import com.example.lenovo.fubaihui.bean.FranchiseeInfo;
 import com.example.lenovo.fubaihui.bean.RegisterBean;
 import com.example.lenovo.fubaihui.bean.SignBean;
 
-import java.util.Map;
-
 import io.reactivex.Observable;
 import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 
