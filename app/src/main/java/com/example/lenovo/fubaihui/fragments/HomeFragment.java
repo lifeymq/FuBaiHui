@@ -14,9 +14,9 @@ import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
-import com.example.lenovo.fubaihui.activity.Fbh_ShopActivity;
 import com.example.lenovo.fubaihui.activity.FranchiseeActivity;
-import com.example.lenovo.fubaihui.activity.Inte_ShopActivity;
+import com.example.lenovo.fubaihui.activity.FuBaiHuiStoreActivity;
+import com.example.lenovo.fubaihui.activity.IntegralActivity;
 import com.example.lenovo.fubaihui.activity.MemberActivity;
 import com.example.lenovo.fubaihui.bean.Home_Choiceness;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
@@ -27,6 +27,7 @@ import com.example.lenovo.fubaihui.model.TestModel;
 import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
 import com.superluo.textbannerlibrary.TextBannerView;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -102,7 +103,7 @@ TextBannerView tvban;
                 ArrayList<String> strings = new ArrayList<>();
                 for (int i = 0; i < jingxuan.size(); i++) {
 //                    showLog("ssssssssssssssssss"+Config.BASEURL1+jingxuan.get(i).getPath());
-//                    showLog("ssssssssssssssssss"+gonggao.get(i).getTitle());
+                    showLog("ssssssssssssssssss"+gonggao.get(i).getTitle());
                     strings.add(gonggao.get(i).getTitle());
                 }
 
@@ -115,12 +116,11 @@ TextBannerView tvban;
                 tvban.setItemOnClickListener(new ITextBannerItemClickListener() {
                     @Override
                     public void onItemClick(String data, int position) {
-//                        showToast(data+"sadasdasdasd");
-
+                        showToast(data+"sadasdasdasd");
                     }
                 });
 
-//                int[] tab={R.drawable.home_my_page_bottom_my_cargo,};
+
 
                 break;
         }
@@ -128,27 +128,29 @@ TextBannerView tvban;
     }
 
 
-    @Override
-    public void initView() {
-        super.initView();
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add("http://01imgmini.eastday.com//mobile//20191022//2019102210_ab99d9ecef1540efb10427787cd46be3_3901_cover_mwpm_03200403.jpg");
-        strings.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg");
-        strings.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg");
-        mMyban.setImages(strings).setImageLoader(new MyBanner()).start();
+   @Override
+   public void initView() {
+      super.initView();
+      ArrayList<String> strings = new ArrayList<>();
+      strings.add("http://01imgmini.eastday" +
+          ".com//mobile//20191022" +
+          "//2019102210_ab99d9ecef1540efb10427787cd46be3_3901_cover_mwpm_03200403.jpg");
+      strings.add("http://01imgmini.eastday" +
+          ".com//mobile//20191022" +
+          "//2019102210_ab99d9ecef1540efb10427787cd46be3_3901_cover_mwpm_03200403.jpg");
+      strings.add("http://01imgmini.eastday" +
+          ".com//mobile//20191022" +
+          "//2019102210_ab99d9ecef1540efb10427787cd46be3_3901_cover_mwpm_03200403.jpg");
+      mMyban.setImages(strings).setBannerStyle(BannerConfig.CIRCLE_INDICATOR).setImageLoader(new MyBanner()).start();
+      changeImageSize();
+   }
 
-
-
-        changeImageSize();
-
-    }
-
-    class MyBanner extends ImageLoader {
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(context).load(path).into(imageView);
-        }
-    }
+   class MyBanner extends ImageLoader {
+      @Override
+      public void displayImage(Context context, Object path, ImageView imageView) {
+         Glide.with(context).load((String) path).into(imageView);
+      }
+   }
 
     private void changeImageSize() {
         //定义底部标签图片大小
@@ -168,24 +170,23 @@ TextBannerView tvban;
     }
 
 
-    @OnClick({R.id.mybtnshop1, R.id.mybtnshop2, R.id.mybtnshop3, R.id.mybtnshop4})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            default:
-                break;
-            case R.id.mybtnshop1:
-
-                startActivity(new Intent(getActivity(), Fbh_ShopActivity.class));
-                break;
-            case R.id.mybtnshop2:
-                startActivity(new Intent(getActivity(), Inte_ShopActivity.class));
-                break;
-            case R.id.mybtnshop3:
-                startActivity(new Intent(getActivity(), MemberActivity.class));
-                break;
-            case R.id.mybtnshop4:
-                startActivity(new Intent(getActivity(), FranchiseeActivity.class));
-                break;
-        }
-    }
+   @OnClick({R.id.mybtnshop1, R.id.mybtnshop2, R.id.mybtnshop3, R.id.mybtnshop4})
+   public void onClick(View v) {
+      switch (v.getId()) {
+         default:
+            break;
+         case R.id.mybtnshop1:
+            startActivity(new Intent(getActivity(), FuBaiHuiStoreActivity.class));
+            break;
+         case R.id.mybtnshop2:
+            startActivity(new Intent(getActivity(), IntegralActivity.class));
+            break;
+         case R.id.mybtnshop3:
+            startActivity(new Intent(getActivity(), MemberActivity.class));
+            break;
+         case R.id.mybtnshop4:
+            startActivity(new Intent(getActivity(), FranchiseeActivity.class));
+            break;
+      }
+   }
 }

@@ -1,7 +1,9 @@
 package com.example.lenovo.fubaihui.fragments;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
@@ -20,12 +23,14 @@ import com.example.lenovo.fubaihui.mainactivity.DataActivity;
 import com.example.lenovo.fubaihui.mainactivity.DiscountActivity;
 import com.example.lenovo.fubaihui.mainactivity.FriendActivity;
 import com.example.lenovo.fubaihui.mainactivity.OrderActivity;
-import com.example.lenovo.fubaihui.mainactivity.PhoneActivity;
 import com.example.lenovo.fubaihui.mainactivity.RecommendActivity;
 import com.example.lenovo.fubaihui.mainactivity.RecommendNumActivity;
-import com.example.lenovo.fubaihui.mainactivity.SettingActivity;
 import com.example.lenovo.fubaihui.mainactivity.SettledinActivity;
 import com.example.lenovo.fubaihui.mainactivity.WalletActivity;
+import com.hjq.permissions.OnPermission;
+import com.hjq.permissions.XXPermissions;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,9 +94,11 @@ public class MineFragment extends Fragment {
    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
       initView();
+      getPermission();
    }
 
    private void initView() {
+
       Glide.with(getActivity()).load(R.drawable.ic_fubaihui)
           .circleCrop()
           .into(ivMineImage);
@@ -118,7 +125,7 @@ public class MineFragment extends Fragment {
             startActivity(new Intent(getActivity(),DiscountActivity.class));
             break;
          case R.id.ll_mine_setting:
-            startActivity(new Intent(getActivity(),SettingActivity.class));
+            startActivity(new Intent(getActivity(),DataActivity.class));
             break;
          case R.id.ll_mine_recommend:
             startActivity(new Intent(getActivity(),RecommendActivity.class));
@@ -136,7 +143,10 @@ public class MineFragment extends Fragment {
             //登录
             break;
          case R.id.ll_mine_phone:
-            startActivity(new Intent(getActivity(),PhoneActivity.class));
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            Uri data = Uri.parse("tel:" + "18434916114");
+            intent.setData(data);
+            startActivity(intent);
             break;
          case R.id.ll_mine_friend:
             startActivity(new Intent(getActivity(),FriendActivity.class));
@@ -152,4 +162,26 @@ public class MineFragment extends Fragment {
             break;
       }
    }
+
+   private void getPermission() {
+      XXPermissions.with(getActivity())
+          .constantRequest() //可设置被拒绝后继续申请，直到用户授权或者永久拒绝
+          //.permission(Permission.SYSTEM_ALERT_WINDOW, Permission.REQUEST_INSTALL_PACKAGES)
+          // 支持请求 6.0 悬浮窗权限 8.0 请求安装权限
+          .permission(Manifest.permission.CAMERA, Manifest.permission
+              .CALL_PHONE)
+          //不指定权限则自动获取清单中的危险权限
+          .request(new OnPermission() {
+             @Override
+             public void hasPermission(List<String> granted, boolean isAll) {
+             }
+
+             @Override
+             public void noPermission(List<String> denied, boolean quick) {
+                if (denied.size() != 0) Toast.makeText(getActivity(), "拒绝权限影响您正常使用", Toast.LENGTH_SHORT).show();
+             }
+          });
+      //XXPermissions.gotoPermissionSettings(this);//跳转到权限设置页面
+   }
+
 }
