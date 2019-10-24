@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -16,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.activity.Fbh_ShopActivity;
 import com.example.lenovo.fubaihui.activity.FranchiseeActivity;
-import com.example.lenovo.fubaihui.activity.Inte_ShopActivity;
+import com.example.lenovo.fubaihui.activity.IntegralActivity;
 import com.example.lenovo.fubaihui.activity.MemberActivity;
 import com.example.lenovo.fubaihui.bean.Home_Choiceness;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
@@ -34,7 +32,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 //15831631087
 
@@ -171,11 +168,10 @@ TextBannerView tvban;
             default:
                 break;
             case R.id.mybtnshop1:
-
                 startActivity(new Intent(getActivity(), Fbh_ShopActivity.class));
                 break;
             case R.id.mybtnshop2:
-                startActivity(new Intent(getActivity(), Inte_ShopActivity.class));
+                startActivity(new Intent(getActivity(), IntegralActivity.class));
                 break;
             case R.id.mybtnshop3:
                 startActivity(new Intent(getActivity(), MemberActivity.class));
