@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/dp_45"
+    tools:context="com.example.lenovo.fubaihui.activity.SignActivity">
+
+    <ImageView
+        android:layout_width="@dimen/dp_100"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_fubaihui"
+        android:layout_height="@dimen/dp_100" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_330"
+        android:layout_gravity="center"
+        android:background="@drawable/sign_text"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_height="@dimen/dp_45">
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:src="@drawable/user_accout"
+            android:layout_marginTop="@dimen/dp_7"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_height="@dimen/dp_32" />
+        <EditText
+            android:id="@+id/sign_user"
+            android:layout_width="@dimen/dp_330"
+            android:hint="请输入用户名/手机号"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/dp_55"
+            android:layout_height="@dimen/dp_45" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_330"
+        android:layout_gravity="center"
+        android:background="@drawable/sign_text"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_height="@dimen/dp_45">
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:src="@drawable/user_password"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_height="@dimen/dp_32" />
+        <EditText
+            android:id="@+id/sign_password"
+            android:layout_width="@dimen/dp_330"
+            android:hint="请输入密码"
+            android:password="true"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/dp_55"
+            android:layout_height="@dimen/dp_45" />
+        <ImageView
+            android:id="@+id/sign_yan"
+            android:layout_width="@dimen/dp_25"
+            android:src="@mipmap/forget_password_eye_close"
+            android:layout_marginLeft="@dimen/dp_280"
+            android:layout_marginTop="@dimen/dp_11"
+            android:layout_height="@dimen/dp_25" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/sign_button"
+        android:layout_width="@dimen/dp_330"
+        android:text="确认登录"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:layout_marginTop="@dimen/dp_35"
+        android:background="@drawable/sign_button"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_7"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/sign_register"
+            android:layout_width="wrap_content"
+            android:text="立即注册"
+            android:textColor="@color/gray"
+            android:layout_marginRight="@dimen/dp_200"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/sign_modify"
+            android:layout_width="wrap_content"
+            android:text="忘记密码"
+            android:textColor="@color/gray"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_33"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/sign_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/sign_boxtext"
+            android:layout_width="wrap_content"
+            android:text="阅读并同意福百惠用户协议及隐私保护声明"
+            android:textColor="@color/gray"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

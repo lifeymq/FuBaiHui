@@ -5,10 +5,15 @@ package com.example.lenovo.fubaihui.frame;
  */
 
 public class ApiConfig {
-//    public static final int GET_PERSON_RANKING_RESULT_TEST = 1;
-    public static final int GET_STORE_CLASSIFY = 11;
-    public static final int GET_STORE_LIST = 12;
-    public static final int GET_STORE_PARTICULARS = 13;
+   public static final int GET_REGISTER = 1;
+   public static final int GET_CODE = 2;
+   public static final int GET_SIGN = 3;
+   public static final int GET_MODIFY = 4;
+   public static final int GET_INVITATION = 5;
+   public static final int GET_FRANCHISEE=21;
+   public static final int GET_STORE_CLASSIFY = 11;
+   public static final int GET_STORE_LIST = 12;
+   public static final int GET_STORE_PARTICULARS = 13;
 
    public static final int GET_PERSON_RANKING_RESULT_TEST = 1;
 
@@ -34,10 +39,6 @@ public class ApiConfig {
    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL = 16;
    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW = 17;
    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW_POP = 18;
-
-
-
-   public static final int GET_FRANCHISEE = 21;
    public static final int POST_HOME_CHOICENESS = 22;
    public static final int POST_FRANCHISEEDETAILS = 23;
 
