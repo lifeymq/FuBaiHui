@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.fubaihui.activity.Fbh_ShopActivity">
-
-    <TextView
+    android:orientation="vertical"
+    tools:context="com.example.lenovo.fubaihui.activity.MainActivity">
+    <TextView android:id="@+id/pop_text_item"
+        android:textSize="17sp"
+        android:layout_margin="@dimen/dp_5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="福百惠商城"
-        android:layout_centerInParent="true"
-        />
-
+        android:layout_height="wrap_content" />
 </RelativeLayout>

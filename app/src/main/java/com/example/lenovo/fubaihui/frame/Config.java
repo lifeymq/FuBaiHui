@@ -6,6 +6,7 @@ package com.example.lenovo.fubaihui.frame;
 
 public class Config {
     public static String BASEURL;
+    public static String BASEURL1 ;
     private static int type = 1;
 
     /**
@@ -15,10 +16,15 @@ public class Config {
      */
     static {
         if (type == 1){//在一种环境下可能有多个服务器
+//
+            BASEURL1 = "http://newwasj.zhangtongdongli.com/";
             BASEURL = "http://newwasj.zhangtongdongli.com/";
         } else if (type == 2){
+//
+//          BASEURL1 = "http://newwasj.zhangtongdongli.com/";
             BASEURL = "http://newwasj.zhangtongdongli.com/";
         } else {
+//
             BASEURL = "http://newwasj.zhangtongdongli.com/";
         }
     }
