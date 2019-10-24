@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -33,6 +35,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 //15831631087
 
@@ -42,87 +45,87 @@ import butterknife.OnClick;
 public class HomeFragment extends BaseFragmentMvp {
 
 
-   @BindView(R.id.myban)
-   Banner mMyban;
-   @BindView(R.id.mybtnshop1)
-   RadioButton mMybtnshop1;
-   @BindView(R.id.mybtnshop2)
-   RadioButton mybtnshop2;
-   @BindView(R.id.mybtnshop3)
-   RadioButton mybtnshop3;
-   @BindView(R.id.mybtnshop4)
-   RadioButton mybtnshop4;
-   @BindView(R.id.rg)
-   RadioGroup Rg;
-   @BindView(R.id.iv1)
-   ImageView iv1;
-   @BindView(R.id.iv2)
-   ImageView iv2;
-   @BindView(R.id.iv3)
-   ImageView iv3;
-   @BindView(R.id.iv4)
-   ImageView iv4;
-   @BindView(R.id.tvban)
-   TextBannerView tvban;
+    @BindView(R.id.myban)
+    Banner mMyban;
+    //    @BindView(R.id.mytab)
+//    TabLayout mMytab;
+//    @BindView(R.id.myrec)
+//    RecyclerView mMyrec;
+    @BindView(R.id.mybtnshop1)
+    RadioButton mMybtnshop1;
+    @BindView(R.id.mybtnshop2)
+    RadioButton mybtnshop2;
+    @BindView(R.id.mybtnshop3)
+    RadioButton mybtnshop3;
+    @BindView(R.id.mybtnshop4)
+    RadioButton mybtnshop4;
+    @BindView(R.id.rg)
+    RadioGroup Rg;
+ @BindView(R.id.iv1)
+    ImageView iv1;
+@BindView(R.id.iv2)
+    ImageView iv2;
+@BindView(R.id.iv3)
+    ImageView iv3;
+@BindView(R.id.iv4)
+    ImageView iv4;
+@BindView(R.id.tvban)
+TextBannerView tvban;
 
 
-   private List<Home_Choiceness.DataBean> dataBeans = new ArrayList<>();
+    private List<Home_Choiceness.DataBean> dataBeans=new ArrayList<>();
 
-   @Override
-   public ICommonModel setModel() {
-      return new TestModel();
-   }
+    @Override
+    public ICommonModel setModel() {
+        return new TestModel();
+    }
 
-   @Override
-   public int getLayoutId() {
-      return R.layout.fragment_home;
-   }
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_home;
+    }
 
 
-   @Override
-   public void setUp() {
-      mPresenter.getData(ApiConfig.POST_HOME_CHOICENESS);
-   }
+    @Override
+    public void setUp() {
+        mPresenter.getData(ApiConfig.POST_HOME_CHOICENESS);
+    }
 
-   @Override
-   public void onSuccess(int whichApi, Object successResult) {
-      super.onSuccess(whichApi, successResult);
-      switch (whichApi) {
-         case ApiConfig.POST_HOME_CHOICENESS:
-            Home_Choiceness home_choiceness = (Home_Choiceness) successResult;
-            List<Home_Choiceness.DataBean.JingxuanBean> jingxuan = home_choiceness.getData()
-                .getJingxuan();
-            final List<Home_Choiceness.DataBean.GonggaoBean> gonggao = home_choiceness.getData()
-                .getGonggao();
+    @Override
+    public void onSuccess(int whichApi, Object successResult) {
+        super.onSuccess(whichApi, successResult);
+        switch (whichApi) {
+            case ApiConfig.POST_HOME_CHOICENESS:
+                Home_Choiceness home_choiceness= (Home_Choiceness) successResult;
+                List<Home_Choiceness.DataBean.JingxuanBean> jingxuan = home_choiceness.getData().getJingxuan();
+                final List<Home_Choiceness.DataBean.GonggaoBean> gonggao = home_choiceness.getData().getGonggao();
 
-            ArrayList<String> strings = new ArrayList<>();
-            for (int i = 0; i < jingxuan.size(); i++) {
-               //                    showLog("ssssssssssssssssss"+Config.BASEURL1+jingxuan.get(i)
-               // .getPath());
-               showLog("ssssssssssssssssss" + gonggao.get(i).getTitle());
-               strings.add(gonggao.get(i).getTitle());
-            }
+                ArrayList<String> strings = new ArrayList<>();
+                for (int i = 0; i < jingxuan.size(); i++) {
+//                    showLog("ssssssssssssssssss"+Config.BASEURL1+jingxuan.get(i).getPath());
+                    showLog("ssssssssssssssssss"+gonggao.get(i).getTitle());
+                    strings.add(gonggao.get(i).getTitle());
+                }
 
-            Glide.with(getActivity()).load(Config.BASEURL1 + jingxuan.get(0).getPath())
-                .placeholder(R.mipmap.ic_launcher).into(iv1);
-            Glide.with(getActivity()).load(Config.BASEURL1 + jingxuan.get(1).getPath())
-                .placeholder(R.mipmap.ic_launcher).into(iv2);
-            Glide.with(getActivity()).load(Config.BASEURL1 + jingxuan.get(2).getPath())
-                .placeholder(R.mipmap.ic_launcher).into(iv3);
-            Glide.with(getActivity()).load(Config.BASEURL1 + jingxuan.get(3).getPath())
-                .placeholder(R.mipmap.ic_launcher).into(iv4);
+                Glide.with(getActivity()).load(Config.BASEURL1+jingxuan.get(0).getPath()).placeholder(R.mipmap.ic_launcher).into(iv1);
+                Glide.with(getActivity()).load(Config.BASEURL1+jingxuan.get(1).getPath()).placeholder(R.mipmap.ic_launcher).into(iv2);
+                Glide.with(getActivity()).load(Config.BASEURL1+jingxuan.get(2).getPath()).placeholder(R.mipmap.ic_launcher).into(iv3);
+                Glide.with(getActivity()).load(Config.BASEURL1+jingxuan.get(3).getPath()).placeholder(R.mipmap.ic_launcher).into(iv4);
 
-            tvban.setDatas(strings);
-            tvban.setItemOnClickListener(new ITextBannerItemClickListener() {
-               @Override
-               public void onItemClick(String data, int position) {
-                  showToast(data + "sadasdasdasd");
-               }
-            });
-            break;
-      }
+                tvban.setDatas(strings);
+                tvban.setItemOnClickListener(new ITextBannerItemClickListener() {
+                    @Override
+                    public void onItemClick(String data, int position) {
+                        showToast(data+"sadasdasdasd");
+                    }
+                });
 
-   }
+
+
+                break;
+        }
+
+    }
 
 
    @Override
@@ -149,22 +152,22 @@ public class HomeFragment extends BaseFragmentMvp {
       }
    }
 
-   private void changeImageSize() {
-      //定义底部标签图片大小
-      Drawable drawfirst = getResources().getDrawable(R.drawable.home_page_fbh_store);
-      Drawable drawfirst2 = getResources().getDrawable(R.drawable.home_page_silver_store);
-      Drawable drawfirst3 = getResources().getDrawable(R.drawable.home_page_search_vip);
-      Drawable drawfirst4 = getResources().getDrawable(R.drawable.home_page_join_us);
-      drawfirst.setBounds(0, 0, 90, 90);
-      drawfirst2.setBounds(0, 0, 90, 90);
-      drawfirst3.setBounds(0, 0, 90, 90);
-      drawfirst4.setBounds(0, 0, 90, 90);
-      mMybtnshop1.setCompoundDrawables(null, drawfirst, null, null);
-      mybtnshop2.setCompoundDrawables(null, drawfirst2, null, null);
-      mybtnshop3.setCompoundDrawables(null, drawfirst3, null, null);
-      mybtnshop4.setCompoundDrawables(null, drawfirst4, null, null);
+    private void changeImageSize() {
+        //定义底部标签图片大小
+        Drawable drawfirst = getResources().getDrawable(R.drawable.home_page_fbh_store);
+        Drawable drawfirst2 = getResources().getDrawable(R.drawable.home_page_silver_store);
+        Drawable drawfirst3 = getResources().getDrawable(R.drawable.home_page_search_vip);
+        Drawable drawfirst4 = getResources().getDrawable(R.drawable.home_page_join_us);
+        drawfirst.setBounds(0, 0, 90, 90);
+        drawfirst2.setBounds(0, 0, 90, 90);
+        drawfirst3.setBounds(0, 0, 90, 90);
+        drawfirst4.setBounds(0, 0, 90, 90);
+        mMybtnshop1.setCompoundDrawables(null, drawfirst, null, null);
+        mybtnshop2.setCompoundDrawables(null, drawfirst2, null, null);
+        mybtnshop3.setCompoundDrawables(null, drawfirst3, null, null);
+        mybtnshop4.setCompoundDrawables(null, drawfirst4, null, null);
 
-   }
+    }
 
 
    @OnClick({R.id.mybtnshop1, R.id.mybtnshop2, R.id.mybtnshop3, R.id.mybtnshop4})

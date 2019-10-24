@@ -20,12 +20,17 @@
             android:background="?attr/colorBackgroundFloating"
             android:id="@+id/mytoolbar">
 
+
+
             <ImageView
                 android:id="@+id/ivsao"
                 android:layout_width="@dimen/dp_30"
                 android:layout_height="@dimen/dp_30"
                 android:src="@drawable/saoyisao"
                 />
+
+
+
 
 
             <TextView
@@ -35,7 +40,38 @@
                 android:gravity="center"
                 android:textSize="@dimen/dp_16"
                 android:text="首页"
+                android:visibility="gone"
+
                 />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_shape2"
+                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_25"
+                android:id="@+id/rtlsou"
+                >
+
+            <EditText
+                android:id="@+id/etsou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="搜索商品或商家"
+                android:layout_centerInParent="true"
+                />
+             <ImageView
+                 android:id="@+id/ivsou"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/em_search_bar_icon_normal"
+                 android:layout_alignParentRight="true"
+                 android:layout_centerInParent="true"
+                 />
+            </RelativeLayout>
+
 
 
         </android.support.v7.widget.Toolbar>

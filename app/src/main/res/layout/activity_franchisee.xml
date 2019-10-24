@@ -7,130 +7,113 @@
    android:background="@color/dark_grey"
    android:orientation="vertical"
    tools:context="com.example.lenovo.fubaihui.activity.FranchiseeActivity">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="?attr/actionBarSize"
+        android:background="?attr/colorBackgroundFloating"
+        android:id="@+id/mytoolbar"
+        >
 
-   <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/dp_40"
-      android:background="#11CC11">
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:src="@drawable/ic_back_left"
+            />
 
-      <ImageView
-         android:id="@+id/fish_integral"
-         android:layout_width="@dimen/dp_30"
-         android:layout_height="@dimen/dp_30"
-         android:layout_centerVertical="true"
-         android:src="@drawable/back" />
 
-      <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerInParent="true"
-         android:text="加盟商家"
-         android:textColor="#FFF"
-         android:textSize="25sp" />
-   </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/dp_16"
+            android:text="加盟伙伴"
+            android:textStyle="normal"
+            />
 
-   <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/dp_30"
-      android:layout_gravity="center">
 
-      <LinearLayout
-         android:id="@+id/provinces"
-         android:layout_width="0dp"
-         android:layout_height="@dimen/dp_20"
-         android:layout_marginTop="@dimen/dp_5"
-         android:layout_weight="3">
 
-         <TextView
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:id="@+id/provinces"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="省份" />
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_weight="3">
 
-         <TextView
-            android:id="@+id/provincestext"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="#B9B0B0" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="省份" />
 
-         <ImageView
+            <TextView
+                android:id="@+id/provincestext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="#B9B0B0" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#B9B0B0"
+                android:src="@drawable/down" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/county"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="区县" />
+
+            <TextView
+                android:id="@+id/countytext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="#B9B0B0" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#B9B0B0"
+                android:src="@drawable/down" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/showpopupwindow_img"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_5"
             android:layout_weight="1"
-            android:background="#B9B0B0"
-            android:src="@drawable/down" />
-      </LinearLayout>
+            android:src="@drawable/xiaoxiquan" />
+    </LinearLayout>
 
-      <LinearLayout
-         android:id="@+id/city"
-         android:layout_width="0dp"
-         android:layout_height="@dimen/dp_20"
-         android:layout_marginTop="@dimen/dp_5"
-         android:layout_weight="3">
-
-         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="城市" />
-
-         <TextView
-            android:id="@+id/citytext"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="#B9B0B0" />
-
-         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#B9B0B0"
-            android:src="@drawable/down" />
-      </LinearLayout>
-
-      <LinearLayout
-         android:id="@+id/county"
-         android:layout_width="0dp"
-         android:layout_height="@dimen/dp_20"
-         android:layout_marginTop="@dimen/dp_5"
-         android:layout_weight="3">
-
-         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="区县" />
-
-         <TextView
-            android:id="@+id/countytext"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="#B9B0B0" />
-
-         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#B9B0B0"
-            android:src="@drawable/down" />
-      </LinearLayout>
-
-      <ImageView
-         android:id="@+id/showpopupwindow_img"
-         android:layout_width="0dp"
-         android:layout_height="@dimen/dp_20"
-         android:layout_marginTop="@dimen/dp_5"
-         android:layout_weight="1"
-         android:src="@drawable/xiaoxiquan" />
-   </LinearLayout>
-
-   <android.support.v7.widget.RecyclerView
-      android:id="@+id/rv_franchisee"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_weight="1" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_franchisee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>
