@@ -16,8 +16,9 @@ public abstract class BaseMvpActivity<M extends ICommonModel> extends BaseActivi
         ButterKnife.bind(this);
         mPresenter = new CommonPresenter();
         mPresenter.bind(this, setModel());
-        setUp();
+
         initView();
+        setUp();
     }
 
     public abstract void initView();

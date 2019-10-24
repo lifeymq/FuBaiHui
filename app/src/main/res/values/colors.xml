@@ -28,6 +28,7 @@
     <color name="red_theme">#d53d3c</color>
     <color name="blue_theme">#3885af</color>
     <color name="green_theme">#1AAC19</color>
+    <color name="green">#0d9b0c</color>
     <color name="splash_bar">#3F71CC</color>
     <color name="popup_bg">#8f000000</color>
     <color name="round_shape_grey_out">#E2DBDB</color>
