@@ -21,7 +21,7 @@ public abstract class BaseMvpActivity<M extends ICommonModel> extends BaseActivi
         setUp();
     }
 
-    public abstract void initView();
+    public  void initView(){}
 
     @Override
     protected void onDestroy() {

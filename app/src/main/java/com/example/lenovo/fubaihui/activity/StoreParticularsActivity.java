@@ -29,7 +29,6 @@ import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
-import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -213,8 +212,8 @@ public class StoreParticularsActivity extends BaseMvpActivity implements View.On
     public class GlideImageLoader extends ImageLoader {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-//            Glide.with(context).load("http://newwasj.zhangtongdongli.com" + path).into(imageView);
-            Picasso.with(context).load("http://newwasj.zhangtongdongli.com" + path).into(imageView);
+            Glide.with(context).load("http://newwasj.zhangtongdongli.com" + path).into(imageView);
+
 //            imageView.setImageResource((Integer) path);
         }
         //提供createImageView 方法，如果不用可以不重写这个方法，主要是方便自定义ImageView的创建
