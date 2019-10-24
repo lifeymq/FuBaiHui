@@ -1,10 +1,10 @@
 package com.example.lenovo.fubaihui.bean;
 
-public class RegisterBean {
+public class ModifyBean {
 
     /**
      * code : 200
-     * msg : 注册成功
+     * msg : 修改密码成功！
      */
 
     private int code;
@@ -28,7 +28,7 @@ public class RegisterBean {
 
     @Override
     public String toString() {
-        return "RegisterBean{" +
+        return "ModifyBean{" +
                 "code=" + code +
                 ", msg='" + msg + '\'' +
                 '}';

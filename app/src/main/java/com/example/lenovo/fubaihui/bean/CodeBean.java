@@ -2,6 +2,11 @@ package com.example.lenovo.fubaihui.bean;
 
 public class CodeBean {
 
+    /**
+     * code : 200
+     * content : 3056
+     */
+
     private int code;
     private String content;
 
@@ -19,5 +24,13 @@ public class CodeBean {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "CodeBean{" +
+                "code=" + code +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

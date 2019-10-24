@@ -1,5 +1,6 @@
 package com.example.lenovo.fubaihui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,6 +9,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,12 +19,14 @@ import android.widget.TextView;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.CodeBean;
+import com.example.lenovo.fubaihui.bean.Invitationcode;
 import com.example.lenovo.fubaihui.bean.RegisterBean;
 import com.example.lenovo.fubaihui.design.SmsVerifyView;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
+import com.yiyatech.utils.ext.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -58,6 +62,16 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
     private String content;
     private String msg;
     private int code1;
+    private int code;
+    private String msg1;
+    private String recommend_code;
+    private String uid;
+
+    public static RegisterActivity getInstance(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
+        context.startActivity(intent);
+        return new RegisterActivity();
+    }
 
     @Override
     public ICommonModel setModel() {
@@ -71,6 +85,7 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
 
     @Override
     public void setUp() {
+        mPresenter.getData(ApiConfig.GET_INVITATION,1+"");
     }
 
     @Override
@@ -78,13 +93,40 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
         switch (whichApi){
             case ApiConfig.GET_REGISTER:
                 RegisterBean registerBean = (RegisterBean) successResult;
-                msg = registerBean.getMsg();
-                mPresenter.getData(ApiConfig.GET_REGISTER,phone,password,content,1,huocode);
+                code1 = registerBean.getCode();
+                Log.i("睚眦",registerBean.toString());
+                if (code1 == 200){
+                    msg = registerBean.getMsg();
+                    Intent intent = new Intent(RegisterActivity.this, SignActivity.class);
+                    startActivity(intent);
+                    showToast(msg+"");
+                    finish();
+                } else {
+                    showToast(msg+"");
+                }
                 break;
             case ApiConfig.GET_CODE:
-                CodeBean code = (CodeBean) successResult;
-                content = code.getContent();
-                code1 = code.getCode();
+                CodeBean codeBean = (CodeBean) successResult;
+                Log.i("睚眦",codeBean.toString());
+                code = codeBean.getCode();
+                if (code == 200){
+                    content = codeBean.getContent();
+                    showToast("发送成功,注意接收");
+                }else {
+                    showToast("请输入正确的手机号");
+                }
+                break;
+            case ApiConfig.GET_INVITATION:
+                Invitationcode invitationcode = (Invitationcode) successResult;
+                Log.i("睚眦",invitationcode.toString());
+                code = invitationcode.getCode();
+                if (code == 200){
+                    msg1 = invitationcode.getMsg();
+                    recommend_code = invitationcode.getData().getRecommend_code();
+                    uid = invitationcode.getData().getUid();
+                }else {
+                    showToast(msg1+"");
+                }
                 break;
         }
     }
@@ -103,65 +145,42 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
         password = registerpassword.getText().toString();
         ma = registerma.getText().toString();
         switch (view.getId()) {
-            case R.id.register_return: //返回
+            case R.id.register_return: //返回键
                 finish();
                 break;
             case R.id.register_code: //验证码
-                mPresenter.getData(ApiConfig.GET_CODE,phone);
-                if (phone != null && phone.length() == 11) {
-                    mView.enableVerify();
-                    CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(registerCode, 60000, 1000);
-                    mCountDownTimerUtils.start();
-                } else {
-                    mView.disableVerify();
-                }
+                mPresenter.getData(ApiConfig.GET_CODE, phone);
+                    if (code == 200){
+                        RegisterActivity.CountDownTimerUtils mCountDownTimerUtils = new RegisterActivity.CountDownTimerUtils(registerCode, 60000, 1000);
+                        mCountDownTimerUtils.start();
+                    }
                 break;
             case R.id.register_box: //CheckBox框
                 break;
             case R.id.register_button: //注册按钮
                 if (TextUtils.isEmpty(mView.getPhone()) || TextUtils.isEmpty(mView.getVerifyCode()) ||
                       TextUtils.isEmpty(ma) || TextUtils.isEmpty(password)){
-                    if (TextUtils.isEmpty(mView.getPhone())){
-                        showToast("请输入手机号");
-                        return;
-                    }else {
-                         if (TextUtils.isEmpty(mView.getVerifyCode())) {
-                            showToast("请输入验证码");
-                            return;
-                        }else {
-                             if (TextUtils.isEmpty(password)){
-                                 showToast("密码不能为空");
-                                 return;
-                             }else {
-                                 if (TextUtils.isEmpty(ma)){
-                                     showToast("请输入邀请码");
-                                     return;
-                                 }
-                             }
-                         }
-                    }
-                    return;
+                   showToast(msg+"");
                 }else{
-                    if (huocode.equals(content)){
-                        if (registerBox.isChecked()==true){
+                    if (registerBox.isChecked()==true){
+                        if (huocode.equals(content)){
+                            mPresenter.getData(ApiConfig.GET_REGISTER,phone,password,recommend_code,1+"",content);
                             if (code1 == 200){
-                                showToast("注册成功");
                                 Intent intent = new Intent(RegisterActivity.this, SignActivity.class);
-                                intent.putExtra("phone",phone);
-                                intent.putExtra("registerpassword",password);
                                 startActivity(intent);
+                                finish();
                             }
                         }else {
-                            showToast("您没有同意阅读");
+                            showToast(msg+"");
                         }
-                    }else {
-                        showToast("验证码有误");
+                    } else {
+                        showToast("您没有同意阅读");
                     }
-
                 }
                 break;
             case R.id.register_sign: //去登陆
-                startActivity(new Intent(RegisterActivity.this, SignActivity.class));
+                startActivity(new Intent(RegisterActivity.this,SignActivity.class ));
+                finish();
                 break;
         }
     }

@@ -1,13 +1,22 @@
 package com.example.lenovo.fubaihui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.text.Selection;
+import android.text.Spannable;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.SignBean;
@@ -15,13 +24,17 @@ import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
+import com.example.lenovo.fubaihui.utils.SpUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static com.umeng.socialize.net.dplus.CommonNetImpl.UID;
+
 public class SignActivity extends BaseMvpActivity {
 
-
+    @BindView(R.id.sign_yan)
+    ImageView signyan;
     @BindView(R.id.sign_user)
     EditText signUser;
     @BindView(R.id.sign_password)
@@ -38,10 +51,17 @@ public class SignActivity extends BaseMvpActivity {
     TextView signBoxtext;
     private String password;
     private String user;
-    private String phone;
-    private String registerpassword;
     private int code;
-    private String modifypassword;
+    private String msg;
+    public static final String SP_TYPE ="sp_type";
+    public static final String USER_TYPE ="user_type";
+    private SignBean.DataBean data;
+
+    public static SignActivity getInstance(Context context) {
+        Intent intent = new Intent(context, SignActivity.class);
+        context.startActivity(intent);
+        return new SignActivity();
+    }
 
     @Override
     public ICommonModel setModel() {
@@ -55,16 +75,41 @@ public class SignActivity extends BaseMvpActivity {
 
     @Override
     public void initView() {
-        Intent intent = getIntent();
-        phone = intent.getStringExtra("phone");
-        signUser.setText(phone);
-        registerpassword = intent.getStringExtra("registerpassword");
-        modifypassword = intent.getStringExtra("modifypassword");
+        Boolean type = (Boolean) SpUtil.getParam(SP_TYPE, false);
+        if (type) {
+            Integer uid = (Integer) SpUtil.getParam(UID, 0);
+            Integer user_type = (Integer) SpUtil.getParam(USER_TYPE, 0);
+            Intent intent = new Intent(SignActivity.this, HomeActivity.class);
+            intent.putExtra(UID , uid+"");
+            intent.putExtra(USER_TYPE , user_type+"");
+            startActivity(intent);
+            finish();
+        }
+
+        signyan.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (signPassword.getInputType()==128){
+                    //隐藏
+                    signPassword.setInputType(129);
+                    //闭眼
+                    signyan.setImageResource( R.mipmap.forget_password_eye_close );
+                }else {
+                    //显示
+                    signPassword.setInputType(128);
+                    //睁眼
+                    signyan.setImageResource( R.mipmap.forget_password_eye_open );
+                }
+                signPassword.postInvalidate();
+                Spannable text=signPassword.getText();
+                Selection.setSelection(text, text.length());
+            }
+        } );
     }
 
     @Override
     public void setUp() {
-        mPresenter.getData(ApiConfig.GET_SIGN,phone,registerpassword);
+
     }
 
     @Override
@@ -72,8 +117,27 @@ public class SignActivity extends BaseMvpActivity {
         switch (whichApi) {
             case ApiConfig.GET_SIGN:
                 SignBean signBean = (SignBean) successResult;
+                Log.i("睚眦",signBean.toString());
                 code = signBean.getCode();
-               // int uid = signBean.getData().getUid();
+                msg = signBean.getMsg();
+                if (code == 200) {
+                    //账号密码输入成功
+                    msg = signBean.getMsg();
+                    Intent intent = new Intent(SignActivity.this, HomeActivity.class);
+                    data = signBean.getData();
+                    intent.putExtra(UID , data.getUid()+"");
+                    intent.putExtra(USER_TYPE , data.getUser_type()+"");
+
+                    SpUtil.setParam(SP_TYPE,true);
+                    SpUtil.setParam(UID, data.getUid());
+                    SpUtil.setParam(USER_TYPE, data.getUser_type());
+
+                    startActivity(intent);
+                    showToast(msg+"");
+                    finish();
+                }else {
+                    showToast(msg+"");
+                }
                 break;
         }
     }
@@ -86,12 +150,11 @@ public class SignActivity extends BaseMvpActivity {
             case R.id.sign_button: //登录按钮
                 if (!TextUtils.isEmpty(user) && !TextUtils.isEmpty(password)){
                     if (signBox.isChecked() == true) {
-                        if (user.equals(phone) && password.equals(registerpassword) || password.equals(modifypassword)) {
+                        mPresenter.getData(ApiConfig.GET_SIGN,user,password);
+                        if (code == 200){
                             Intent intent0 = new Intent(SignActivity.this, HomeActivity.class);
                             startActivity(intent0);
-                            showToast("登录成功！");
-                        } else {
-                            showToast("输入的账号或密码不对");
+                            finish();
                         }
                     }else{
                         showToast("您没有同意阅读。");

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.fubaihui.R;
+import com.example.lenovo.fubaihui.frame.ApiConfig;
 
 
 public class SmsVerifyView extends LinearLayout {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -70,7 +69,7 @@
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dp_11"
+            android:layout_marginTop="@dimen/dp_10"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginRight="@dimen/dp_20"
             android:background="@color/cut_line"
@@ -79,7 +78,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dp_19"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_height="wrap_content">
             <ImageView
@@ -107,7 +106,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dp_19"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_height="wrap_content">
             <ImageView

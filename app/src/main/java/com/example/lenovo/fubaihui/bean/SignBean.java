@@ -37,6 +37,10 @@ public class SignBean {
     }
 
     public static class DataBean {
+        /**
+         * uid : 513
+         * user_type : 2
+         */
 
         private int uid;
         private int user_type;
@@ -56,5 +60,14 @@ public class SignBean {
         public void setUser_type(int user_type) {
             this.user_type = user_type;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "SignBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

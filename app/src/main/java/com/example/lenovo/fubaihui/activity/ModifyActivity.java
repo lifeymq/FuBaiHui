@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -20,6 +21,7 @@ import android.widget.ToggleButton;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.CodeBean;
+import com.example.lenovo.fubaihui.bean.ModifyBean;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
@@ -34,8 +36,6 @@ public class ModifyActivity extends BaseMvpActivity {
     ImageView modifyReturn;
     @BindView(R.id.modify_cuo)
     ImageView modifyCuo;
-    @BindView(R.id.register_toolbar)
-    Toolbar registerToolbar;
     @BindView(R.id.modify_phone)
     TextView modifyPhone;
     @BindView(R.id.modify_code)
@@ -48,8 +48,13 @@ public class ModifyActivity extends BaseMvpActivity {
     ToggleButton modifyYan;
     @BindView(R.id.modify_button)
     Button modifyButton;
-    private int code1;
+    private int code;
     private String content;
+    private int code1;
+    private String phone;
+    private String modifycode;
+    private String password;
+    private String msg;
 
     @Override
     public ICommonModel setModel() {
@@ -90,39 +95,61 @@ public class ModifyActivity extends BaseMvpActivity {
     public void onSuccess(int whichApi, Object successResult) {
         switch (whichApi){
             case ApiConfig.GET_CODE:
-                CodeBean code = (CodeBean) successResult;
-                content = code.getContent();
-                code1 = code.getCode();
+                CodeBean codeBean = (CodeBean) successResult;
+                Log.i("睚眦",codeBean.toString());
+                code = codeBean.getCode();
+                if (code == 200){
+                    content = codeBean.getContent();
+                    showToast("发送成功,注意接收");
+                }else {
+                    showToast("请输入正确的手机号");
+                }
+                break;
+            case ApiConfig.GET_MODIFY:
+                ModifyBean modifyBean = (ModifyBean) successResult;
+                Log.i("睚眦",modifyBean.toString());
+                code1 = modifyBean.getCode();
+                if (code1 == 200){
+                    msg = modifyBean.getMsg();
+                    showToast("修改成功");
+                    Intent intent = new Intent(ModifyActivity.this, SignActivity.class);
+                    startActivity(intent);
+                }else {
+                    showToast(msg+"");
+                }
                 break;
         }
     }
 
     @OnClick({R.id.modify_facode, R.id.modify_button ,R.id.modify_return})
     public void onViewClicked(View view) {
-        String code = modifyCode.getText().toString();
-        String password = maskedPassword.getText().toString();
-        String facode = modifyFacode.getText().toString();
+        phone = modifyPhone.getText().toString();
+        modifycode = modifyCode.getText().toString();
+        password = maskedPassword.getText().toString();
         switch (view.getId()) {
             case R.id.modify_return: //返回
                 finish();
                 break;
             case R.id.modify_facode: //发送验证码
-                //mPresenter.getData(ApiConfig.GET_CODE,modifyPhone);
-                if (TextUtils.isEmpty(modifyPhone.getText().toString())){
-                    showToast("请输入发送的手机号");
-                }else {
+                mPresenter.getData(ApiConfig.GET_CODE, phone);
+                if (code == 200){
                     CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(modifyFacode, 60000, 1000);
                     mCountDownTimerUtils.start();
                 }
                 break;
             case R.id.modify_button: //提交按钮
-                if (TextUtils.isEmpty(code) || TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(modifycode) || TextUtils.isEmpty(password)){
                     showToast("验证码或密码不能为空");
                 }else{
-                    showToast("修改成功");
-                    Intent intent = new Intent(ModifyActivity.this, SignActivity.class);
-                    intent.putExtra("modifypassword",password);
-                    startActivity(intent);
+                        if (modifycode.equals(content)){
+                            mPresenter.getData(ApiConfig.GET_MODIFY,1+"", phone, password,content);
+                            if (code1 == 200){
+                                Intent intent = new Intent(ModifyActivity.this, SignActivity.class);
+                                startActivity(intent);
+                            }
+                        }else {
+                            showToast("验证码有误");
+                        }
                 }
                 break;
         }
