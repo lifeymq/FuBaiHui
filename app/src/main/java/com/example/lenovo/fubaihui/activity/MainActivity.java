@@ -12,7 +12,9 @@ import android.util.Log;
 
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.fubaihui.R;
@@ -36,6 +38,11 @@ public class MainActivity extends BaseMvpActivity {
 
     @BindView(R.id.ivsao)
     ImageView myiv;
+     @BindView(R.id.ivsou)
+    ImageView ivsou;
+     @BindView(R.id.etsou)
+     EditText etsou;
+
     @BindView(R.id.mytoolbar)
     Toolbar mMytoolbar;
     @BindView(R.id.myvp)
@@ -44,6 +51,8 @@ public class MainActivity extends BaseMvpActivity {
     TabLayout mMytab;
  @BindView(R.id.toolbartitle)
  TextView toolbartitle;
+ @BindView(R.id.rtlsou)
+ RelativeLayout rtlsou;
 
     private ArrayList<Fragment> fragments;
     private FragmentManager fragmentManager;
@@ -114,16 +123,28 @@ public class MainActivity extends BaseMvpActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
-                       toolbartitle.setText("首页");
+                       toolbartitle.setText("");
+                        toolbartitle.setVisibility(View.GONE);
+                        rtlsou.setVisibility(View.VISIBLE);
+                        myiv.setVisibility(View.VISIBLE);
                         break;
                      case 1:
                        toolbartitle.setText("商品点评");
+                       toolbartitle.setVisibility(View.VISIBLE);
+                         rtlsou.setVisibility(View.GONE);
+                         myiv.setVisibility(View.GONE);
                         break;
                      case 2:
                        toolbartitle.setText("购物车");
+                         toolbartitle.setVisibility(View.VISIBLE);
+                         rtlsou.setVisibility(View.GONE);
+                         myiv.setVisibility(View.GONE);
                         break;
                      case 3:
                        toolbartitle.setText("我的");
+                         toolbartitle.setVisibility(View.VISIBLE);
+                         rtlsou.setVisibility(View.GONE);
+                         myiv.setVisibility(View.GONE);
                         break;
 
                 }
@@ -136,6 +157,18 @@ public class MainActivity extends BaseMvpActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        //搜索跳加盟商家页面  没优化  ！！！！！
+        ivsou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = etsou.getText().toString();
+                showToast(s+"----  -=-=");
+                startActivity(new Intent(MainActivity.this, FranchiseeActivity.class));
+                etsou.setText("");
 
             }
         });

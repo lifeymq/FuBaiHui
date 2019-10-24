@@ -7,6 +7,39 @@
    android:orientation="vertical"
    tools:context="com.example.lenovo.fubaihui.activity.FranchiseeActivity">
 
+   <android.support.v7.widget.Toolbar
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:autofillHints="?attr/actionBarSize"
+       android:background="?attr/colorBackgroundFloating"
+       android:id="@+id/mytoolbar"
+       >
+
+      <ImageView
+          android:id="@+id/iv"
+          android:layout_width="@dimen/dp_30"
+          android:layout_height="@dimen/dp_30"
+         android:src="@drawable/ic_back_left"
+          />
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:textSize="@dimen/dp_16"
+          android:text="加盟伙伴"
+          android:textStyle="normal"
+          />
+
+
+
+
+
+
+   </android.support.v7.widget.Toolbar>
+
+
    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

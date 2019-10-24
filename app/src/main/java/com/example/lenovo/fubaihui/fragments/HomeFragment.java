@@ -102,7 +102,7 @@ TextBannerView tvban;
                 ArrayList<String> strings = new ArrayList<>();
                 for (int i = 0; i < jingxuan.size(); i++) {
 //                    showLog("ssssssssssssssssss"+Config.BASEURL1+jingxuan.get(i).getPath());
-                    showLog("ssssssssssssssssss"+gonggao.get(i).getTitle());
+//                    showLog("ssssssssssssssssss"+gonggao.get(i).getTitle());
                     strings.add(gonggao.get(i).getTitle());
                 }
 
@@ -115,11 +115,12 @@ TextBannerView tvban;
                 tvban.setItemOnClickListener(new ITextBannerItemClickListener() {
                     @Override
                     public void onItemClick(String data, int position) {
-                        showToast(data+"sadasdasdasd");
+//                        showToast(data+"sadasdasdasd");
+
                     }
                 });
 
-
+//                int[] tab={R.drawable.home_my_page_bottom_my_cargo,};
 
                 break;
         }
@@ -135,6 +136,8 @@ TextBannerView tvban;
         strings.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg");
         strings.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg");
         mMyban.setImages(strings).setImageLoader(new MyBanner()).start();
+
+
 
         changeImageSize();
 
