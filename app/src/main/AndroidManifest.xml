@@ -65,7 +65,6 @@
       <activity android:name=".activity.FranchiseeDetailsActivity" />
       <activity android:name=".mainactivity.DataActivity" />
       <activity android:name=".mainactivity.DiscountActivity" />
-      <activity android:name=".mainactivity.SettingActivity" />
       <activity android:name=".mainactivity.RecommendActivity" />
       <activity android:name=".mainactivity.RecommendNumActivity" />
       <activity android:name=".mainactivity.AddressActivity" />

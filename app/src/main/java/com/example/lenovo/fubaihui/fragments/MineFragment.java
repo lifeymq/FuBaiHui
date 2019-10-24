@@ -25,7 +25,6 @@ import com.example.lenovo.fubaihui.mainactivity.FriendActivity;
 import com.example.lenovo.fubaihui.mainactivity.OrderActivity;
 import com.example.lenovo.fubaihui.mainactivity.RecommendActivity;
 import com.example.lenovo.fubaihui.mainactivity.RecommendNumActivity;
-import com.example.lenovo.fubaihui.mainactivity.SettingActivity;
 import com.example.lenovo.fubaihui.mainactivity.SettledinActivity;
 import com.example.lenovo.fubaihui.mainactivity.WalletActivity;
 import com.hjq.permissions.OnPermission;
@@ -126,7 +125,7 @@ public class MineFragment extends Fragment {
             startActivity(new Intent(getActivity(),DiscountActivity.class));
             break;
          case R.id.ll_mine_setting:
-            startActivity(new Intent(getActivity(),SettingActivity.class));
+            startActivity(new Intent(getActivity(),DataActivity.class));
             break;
          case R.id.ll_mine_recommend:
             startActivity(new Intent(getActivity(),RecommendActivity.class));
@@ -145,7 +144,7 @@ public class MineFragment extends Fragment {
             break;
          case R.id.ll_mine_phone:
             Intent intent = new Intent(Intent.ACTION_CALL);
-            Uri data = Uri.parse("tel:" + "13652365236");
+            Uri data = Uri.parse("tel:" + "18434916114");
             intent.setData(data);
             startActivity(intent);
             break;
