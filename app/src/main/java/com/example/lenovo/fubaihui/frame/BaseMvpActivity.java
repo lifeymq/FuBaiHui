@@ -20,9 +20,7 @@ public abstract class BaseMvpActivity<M extends ICommonModel> extends BaseActivi
         initView();
     }
 
-    public void initView() {
-
-    }
+    public abstract void initView();
 
     @Override
     protected void onDestroy() {
@@ -32,7 +30,7 @@ public abstract class BaseMvpActivity<M extends ICommonModel> extends BaseActivi
 
     @Override
     public void onFailed(int whichApi, Throwable failedResult) {
-        showLog("错误接口是："+"GET_PERSON_RANKING_RESULT_TEST"+
+        showLog("错误接口是："+"GET_STORE_CLASSIFY"+
                 failedResult.getMessage());
     }
 
