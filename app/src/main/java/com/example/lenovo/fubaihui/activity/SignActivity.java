@@ -1,8 +1,13 @@
 package com.example.lenovo.fubaihui.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -75,11 +80,12 @@ public class SignActivity extends BaseMvpActivity {
 
     @Override
     public void initView() {
+        initPermission();
         Boolean type = (Boolean) SpUtil.getParam(SP_TYPE, false);
         if (type) {
             Integer uid = (Integer) SpUtil.getParam(UID, 0);
             Integer user_type = (Integer) SpUtil.getParam(USER_TYPE, 0);
-            Intent intent = new Intent(SignActivity.this, HomeActivity.class);
+            Intent intent = new Intent(SignActivity.this, MainActivity.class);
             intent.putExtra(UID , uid+"");
             intent.putExtra(USER_TYPE , user_type+"");
             startActivity(intent);
@@ -111,6 +117,27 @@ public class SignActivity extends BaseMvpActivity {
     public void setUp() {
 
     }
+    private void initPermission() {
+        String[] mPermissions = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE};
+        //先判断版本号是否在23（6.0）以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //检查自身的权限是否设置
+            int i = ContextCompat.checkSelfPermission(this, mPermissions[0]);
+            if (i != PackageManager.PERMISSION_GRANTED) {//没有授权
+                //请求授权
+                ActivityCompat.requestPermissions(this, mPermissions, 1);
+            }
+        }
+        //先判断版本号是否在23（6.0）以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //检查自身的权限是否设置
+            int i = ContextCompat.checkSelfPermission(this, mPermissions[1]);
+            if (i != PackageManager.PERMISSION_GRANTED) {//没有授权
+                //请求授权
+                ActivityCompat.requestPermissions(this, mPermissions, 2);
+            }
+        }
+    }
 
     @Override
     public void onSuccess(int whichApi, Object successResult) {
@@ -123,7 +150,7 @@ public class SignActivity extends BaseMvpActivity {
                 if (code == 200) {
                     //账号密码输入成功
                     msg = signBean.getMsg();
-                    Intent intent = new Intent(SignActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(SignActivity.this, MainActivity.class);
                     data = signBean.getData();
                     intent.putExtra(UID , data.getUid()+"");
                     intent.putExtra(USER_TYPE , data.getUser_type()+"");
@@ -152,7 +179,7 @@ public class SignActivity extends BaseMvpActivity {
                     if (signBox.isChecked() == true) {
                         mPresenter.getData(ApiConfig.GET_SIGN,user,password);
                         if (code == 200){
-                            Intent intent0 = new Intent(SignActivity.this, HomeActivity.class);
+                            Intent intent0 = new Intent(SignActivity.this, MainActivity.class);
                             startActivity(intent0);
                             finish();
                         }

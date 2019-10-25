@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+    android:orientation="vertical"
+   tools:context="com.example.lenovo.fubaihui.mainactivity.DataActivity">
+
+   <include layout="@layout/item_tool"/>
+
+   <RelativeLayout
+       android:id="@+id/data_hand"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_margin="@dimen/dp_6"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="头像"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+      <ImageView
+          android:id="@+id/hand_img"
+          android:layout_width="@dimen/dp_40"
+          android:src="@mipmap/ic_fubaihui"
+          android:layout_alignParentRight="true"
+          android:layout_height="@dimen/dp_40" />
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_2"
+       android:layout_height="@dimen/dp_1"/>
+
+   <RelativeLayout
+       android:id="@+id/data_number"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginLeft="@dimen/dp_6"
+       android:layout_marginRight="@dimen/dp_6"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="账号"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+
+      <ImageView
+          android:id="@+id/data_jian"
+          android:layout_width="@dimen/dp_15"
+          android:src="@drawable/home_my_page_right"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_height="@dimen/dp_15" />
+
+      <TextView
+          android:id="@+id/number_data"
+          android:layout_width="wrap_content"
+          android:textColor="@color/gray"
+          android:layout_alignRight="@id/data_jian"
+          android:layout_marginRight="@dimen/dp_20"
+          android:textSize="@dimen/sp_18"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="@dimen/dp_1"/>
+
+   <RelativeLayout
+       android:id="@+id/data_name"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginLeft="@dimen/dp_6"
+       android:layout_marginRight="@dimen/dp_6"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="昵称"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+      <ImageView
+          android:id="@+id/data_jian2"
+          android:layout_width="@dimen/dp_15"
+          android:src="@drawable/home_my_page_right"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_height="@dimen/dp_15" />
+
+      <TextView
+          android:id="@+id/name_data"
+          android:layout_width="wrap_content"
+          android:textColor="@color/gray"
+          android:layout_alignRight="@id/data_jian2"
+          android:layout_marginRight="@dimen/dp_20"
+          android:textSize="@dimen/sp_18"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="@dimen/dp_1"/>
+
+   <RelativeLayout
+       android:id="@+id/data_administration"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginLeft="@dimen/dp_6"
+       android:layout_marginRight="@dimen/dp_6"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="密码管理"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+      <ImageView
+          android:layout_width="@dimen/dp_15"
+          android:src="@drawable/home_my_page_right"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_height="@dimen/dp_15" />
+
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="@dimen/dp_1"/>
+   <RelativeLayout
+       android:id="@+id/data_cache"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginLeft="@dimen/dp_6"
+       android:layout_marginRight="@dimen/dp_6"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="清除缓存"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="@dimen/dp_20"/>
+
+   <RelativeLayout
+       android:id="@+id/data_opinion"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginLeft="@dimen/dp_6"
+       android:layout_marginRight="@dimen/dp_6"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="意见反馈"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+      <ImageView
+          android:layout_width="@dimen/dp_15"
+          android:src="@drawable/home_my_page_right"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_height="@dimen/dp_15" />
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_11"
+       android:layout_height="@dimen/dp_1"/>
+
+   <RelativeLayout
+       android:id="@+id/data_about"
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginLeft="@dimen/dp_6"
+       android:layout_marginRight="@dimen/dp_6"
+       android:layout_marginTop="@dimen/dp_12"
+       android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:text="关于我们"
+          android:textSize="@dimen/sp_18"
+          android:layout_centerVertical="true"
+          android:layout_height="wrap_content" />
+      <ImageView
+          android:layout_width="@dimen/dp_15"
+          android:src="@drawable/home_my_page_right"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_height="@dimen/dp_15" />
+   </RelativeLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:background="@color/cut_line"
+       android:layout_marginTop="@dimen/dp_12"
+       android:layout_height="@dimen/dp_1"/>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:text="V 1.0.2"
+       android:textSize="@dimen/sp_18"
+       android:layout_gravity="center"
+       android:layout_marginTop="@dimen/dp_15"
+       android:layout_height="wrap_content" />
+
+   <Button
+       android:id="@+id/data_btn"
+       android:layout_width="match_parent"
+       android:text="退出登录"
+       android:textColor="@color/colorWhite"
+       android:layout_marginTop="@dimen/dp_30"
+       android:background="@color/green"
+       android:layout_height="wrap_content" />
+</LinearLayout>

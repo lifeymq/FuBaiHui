@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="福百惠商城"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_20"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_centerInParent="true"/>
@@ -46,7 +46,9 @@
             <com.youth.banner.Banner
                 android:id="@+id/particular_banner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_220"></com.youth.banner.Banner>
+                android:layout_height="@dimen/dp_220">
+
+            </com.youth.banner.Banner>
 
             <TextView
                 android:id="@+id/title"
@@ -175,6 +177,7 @@
 
             <ImageView
                 android:id="@+id/images1"
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view"/>

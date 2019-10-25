@@ -4,10 +4,11 @@
     android:layout_height="wrap_content"
     android:background="@drawable/corner_adapter"
     android:layout_marginBottom="@dimen/dp_5"
-    android:padding="@dimen/dp_15">
+    android:padding="@dimen/dp_8">
 
     <ImageView
         android:id="@+id/cover"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_180" />
 

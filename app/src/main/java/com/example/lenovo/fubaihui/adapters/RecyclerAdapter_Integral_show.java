@@ -30,7 +30,7 @@ public class RecyclerAdapter_Integral_show extends RecyclerView
 
    @NonNull
    @Override
-   public RecyclerAdapter_Integral_show.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                                       int viewType) {
       View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout
           .item_integral_show, parent, false);
@@ -39,7 +39,7 @@ public class RecyclerAdapter_Integral_show extends RecyclerView
    }
 
    @Override
-   public void onBindViewHolder(@NonNull RecyclerAdapter_Integral_show.ViewHolder holder, final
+   public void onBindViewHolder(@NonNull ViewHolder holder, final
    int position) {
 
       Context context = holder.itemView.getContext();

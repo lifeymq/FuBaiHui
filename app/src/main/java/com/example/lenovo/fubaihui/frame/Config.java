@@ -16,15 +16,13 @@ public class Config {
      */
     static {
         if (type == 1){//在一种环境下可能有多个服务器
-//
             BASEURL1 = "http://newwasj.zhangtongdongli.com/";
             BASEURL = "http://newwasj.zhangtongdongli.com/";
         } else if (type == 2){
-//
-//          BASEURL1 = "http://newwasj.zhangtongdongli.com/";
+         BASEURL1 = "http://newwasj.zhangtongdongli.com/";
             BASEURL = "http://newwasj.zhangtongdongli.com/";
         } else {
-//
+            BASEURL1 = "http://newwasj.zhangtongdongli.com/";
             BASEURL = "http://newwasj.zhangtongdongli.com/";
         }
     }

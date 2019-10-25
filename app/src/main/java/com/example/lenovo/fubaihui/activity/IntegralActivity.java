@@ -32,10 +32,12 @@ import com.example.lenovo.fubaihui.model.TestModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 public class IntegralActivity extends AppCompatActivity implements ICommonView,
     RecyclerAdapter_Integral_show.Pull, RecyclerAdapter_pop_show.Pult {
 
-
+   private ImageView fishintegral;
    private TextView provincestext;
    private TextView citytext;
    private TextView countytext;
@@ -66,6 +68,7 @@ public class IntegralActivity extends AppCompatActivity implements ICommonView,
       citytext = findViewById(R.id.citytext);
       countytext = findViewById(R.id.countytext);
       imageView = findViewById(R.id.showpopupwindow_img);
+      fishintegral = findViewById(R.id.fish_integral);
       imageView.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -92,7 +95,12 @@ public class IntegralActivity extends AppCompatActivity implements ICommonView,
             showPickerView();
          }
       });
-
+      fishintegral.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            finish();
+         }
+      });
    }
 
    private void showPickerView() {// 弹出选择器（省市区三级联动）
@@ -259,4 +267,5 @@ public class IntegralActivity extends AppCompatActivity implements ICommonView,
       mPresenter.getData(ApiConfig.GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW_POP, popidlist.get
           (position));
    }
+
 }

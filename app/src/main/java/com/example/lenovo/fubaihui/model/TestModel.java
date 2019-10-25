@@ -37,9 +37,6 @@ public class TestModel implements ICommonModel {
             case ApiConfig.GET_INVITATION:
                 manager.method(manager.getNetService(Config.BASEURL).getInvitationcode((String) params[0]),whichApi,presenterCallBack);
                 break;
-//            case ApiConfig.GET_PERSON_RANKING_RESULT_TEST:
-//                manager.method(manager.getNetService(Config.BASEURL).getTopic(),whichApi,presenterCallBack);
-//                break;
             case ApiConfig.GET_STORE_CLASSIFY:
                 manager.method(manager.getNetService(Config.BASEURL1).getStoreClassify(),whichApi,presenterCallBack);
                 break;
@@ -52,10 +49,6 @@ public class TestModel implements ICommonModel {
                 manager.method(manager.getNetService(Config.BASEURL1).getStoreParticulars(id),whichApi,presenterCallBack);
                 break;
 
-           case ApiConfig.GET_PERSON_RANKING_RESULT_TEST:
-              manager.method(manager.getNetService(Config.BASEURL).getTopic(), whichApi,
-                  presenterCallBack);
-              break;
            case ApiConfig.GET_PERSON_RANKING_RESULT_INTEGRAL:
               manager.method(manager.getNetService(Config.BASEURL1).getIntegral(), whichApi,
                   presenterCallBack);

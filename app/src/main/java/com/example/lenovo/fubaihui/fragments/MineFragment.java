@@ -3,6 +3,7 @@ package com.example.lenovo.fubaihui.fragments;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +30,10 @@ import com.example.lenovo.fubaihui.mainactivity.SettledinActivity;
 import com.example.lenovo.fubaihui.mainactivity.WalletActivity;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.XXPermissions;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -98,17 +103,38 @@ public class MineFragment extends Fragment {
    }
 
    private void initView() {
-
+      EventBus.getDefault().register(this);
       Glide.with(getActivity()).load(R.drawable.ic_fubaihui)
           .circleCrop()
           .into(ivMineImage);
 
    }
 
+   @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+   public void eventBus(String data1){
+      Glide.with(getActivity()).load(data1).circleCrop().into(ivMineImage);
+      SharedPreferences user = getContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
+      SharedPreferences.Editor edit = user.edit();
+      edit.putBoolean("isBoolean",true);
+      edit.putString("path",data1);
+      edit.commit();
+   }
+
+   @Override
+   public void onResume() {
+      super.onResume();
+      SharedPreferences user = getContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
+      String path = user.getString("path", null);
+      Boolean isBoolean = user.getBoolean("isBoolean",false);
+      if(isBoolean==true){
+         Glide.with(getContext()).load(Uri.parse(path)).circleCrop().into(ivMineImage);
+      }
+   }
    @Override
    public void onDestroyView() {
       super.onDestroyView();
       unbinder.unbind();
+      EventBus.getDefault().unregister(this);
    }
 
    @OnClick({R.id.ll_mine_data, R.id

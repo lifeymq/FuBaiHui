@@ -152,12 +152,13 @@ public class FuBaiHuiStoreActivity extends BaseMvpActivity implements AdapterVie
     @Override
     public void onClick(View v) {
         Toast.makeText(this,"返回",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public class GlideImageLoader extends ImageLoader {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            imageView.setImageResource((Integer) path);
+           imageView.setImageResource((Integer) path);
         }
 
         //提供createImageView 方法，如果不用可以不重写这个方法，主要是方便自定义ImageView的创建

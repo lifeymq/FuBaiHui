@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_grey"
+    tools:context="com.example.lenovo.fubaihui.dataactivity.OpinionActivity">
+
+    <include layout="@layout/item_tool"/>
+
+    <EditText
+        android:id="@+id/opinion_liuyan"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_25"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:hint="请填写您的宝贵意见"
+        android:capitalize="words"
+        android:minLines="2"
+        android:background="@drawable/opinion_liu"
+        android:maxLines="220"
+        android:layout_height="@dimen/dp_220" />
+
+    <Button
+        android:id="@+id/opinion_preservation"
+        android:layout_width="@dimen/dp_300"
+        android:text="提交建议"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorWhite"
+        android:background="@color/green"
+        android:layout_marginTop="@dimen/dp_25"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
+</LinearLayout>

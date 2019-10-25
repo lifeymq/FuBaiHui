@@ -1,10 +1,18 @@
 package com.example.lenovo.fubaihui.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+
+
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.adapters.BanViewPager;
@@ -13,6 +21,7 @@ import com.example.lenovo.fubaihui.fragments.CommentFragment;
 import com.example.lenovo.fubaihui.fragments.HomeFragment;
 import com.example.lenovo.fubaihui.fragments.MineFragment;
 import com.example.lenovo.fubaihui.fragments.ShopFragment;
+import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
@@ -54,12 +63,7 @@ public class MainActivity extends BaseMvpActivity {
 
    @Override
    public void onSuccess(int whichApi, Object successResult) {
-      switch (whichApi) {
-         case ApiConfig.GET_PERSON_RANKING_RESULT_TEST:
-            TeamerRankInfo info = (TeamerRankInfo) successResult;
-            Log.e("睚眦", info.toString() + "");
-            break;
-      }
+
    }
 
 

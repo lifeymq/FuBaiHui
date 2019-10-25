@@ -3,6 +3,7 @@ package com.example.lenovo.fubaihui.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class FranchiseeDetailsActivity extends BaseMvpActivity {
    ImageView detailsLogo1;
    @BindView(R.id.details_title1)
    TextView detailsTitle1;
+   @BindView(R.id.fish_integral)
+   ImageView fishintegral;
    private String id;
    private String address_detail;
 
@@ -69,7 +72,12 @@ public class FranchiseeDetailsActivity extends BaseMvpActivity {
 /*      longitudes = data.getLongitude();
       //维度
       latitude = data.getLatitude();*/
-
+      fishintegral.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            finish();
+         }
+      });
 
    }
 

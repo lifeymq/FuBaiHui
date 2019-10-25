@@ -9,14 +9,13 @@
    tools:context="com.example.lenovo.fubaihui.activity.MainActivity">
 
    <RelativeLayout
-
       android:layout_width="match_parent"
       android:layout_height="@dimen/dp_40"
       android:background="#11CC11">
 
       <ImageView
          android:id="@+id/fish_integral"
-         android:layout_width="@dimen/dp_30"
+         android:layout_width="@dimen/dp_25"
          android:layout_height="@dimen/dp_30"
          android:layout_centerVertical="true"
          android:src="@drawable/back" />
@@ -27,7 +26,7 @@
          android:layout_centerInParent="true"
          android:text="银积分商城"
          android:textColor="#FFF"
-         android:textSize="25sp" />
+         android:textSize="20sp" />
    </RelativeLayout>
 
    <LinearLayout

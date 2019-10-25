@@ -174,6 +174,7 @@ public class StoreParticularsActivity extends BaseMvpActivity implements View.On
         switch (v.getId()){
             case R.id.particulars_back:
                 Toast.makeText(this,"返回",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.minus:
                 int i = Integer.parseInt(storeNum.getText().toString()) - 1;

@@ -3,6 +3,8 @@ package com.example.lenovo.fubaihui.activity;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.adapter.FranchiseeAdapter;
@@ -21,6 +23,8 @@ public class FranchiseeActivity extends BaseMvpActivity {
 
    @BindView(R.id.rv_franchisee)
    RecyclerView rvFranchisee;
+   @BindView(R.id.fish_integral)
+   ImageView fishintegral;
    private List<FranchiseeInfo.DataBean> dataLists = new ArrayList<>();
    private FranchiseeAdapter franchiseeAdapter;
 
@@ -38,8 +42,16 @@ public class FranchiseeActivity extends BaseMvpActivity {
       franchiseeAdapter.setOnItemClickListener(new FranchiseeAdapter.OnItemClickListener() {
          @Override
          public void onItemClickListener(int position) {
-            Intent intent = new Intent(FranchiseeActivity.this,FranchiseeDetailsActivity.class);
+            FranchiseeInfo.DataBean dataBean = dataLists.get(position);
+            Intent intent = new Intent(FranchiseeActivity.this, FranchiseeDetailsActivity.class);
+            intent.putExtra("data", dataBean);
             startActivity(intent);
+         }
+      });
+      fishintegral.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            finish();
          }
       });
    }
@@ -59,13 +71,12 @@ public class FranchiseeActivity extends BaseMvpActivity {
       switch (whichApi) {
          case ApiConfig.GET_FRANCHISEE:
             FranchiseeInfo franchiseeInfo = (FranchiseeInfo) successResult;
-
-               List<FranchiseeInfo.DataBean> data = franchiseeInfo.getData();
-               if (data != null && data.size() > 0) {
-                  System.out.println("FranchiseeActivity:"+data.size()+"");
-                  dataLists.addAll(data);
-                  franchiseeAdapter.notifyDataSetChanged();
-               }
+            List<FranchiseeInfo.DataBean> data = franchiseeInfo.getData();
+            if (data != null && data.size() > 0) {
+               System.out.println("FranchiseeActivity:" + data.size() + "");
+               dataLists.addAll(data);
+               franchiseeAdapter.notifyDataSetChanged();
+            }
 
             break;
       }

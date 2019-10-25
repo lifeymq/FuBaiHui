@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.lenovo.fubaihui.dataactivity.NameActivity">
+
+    <include layout="@layout/item_tool"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/name_edit"
+            android:layout_width="@dimen/dp_200"
+            android:background="@null"
+            android:hint="请输入要修改的昵称"
+            android:textSize="@dimen/sp_18"
+            android:layout_height="@dimen/dp_30" />
+        <ImageView
+            android:id="@+id/name_imag"
+            android:layout_width="@dimen/dp_25"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_5"
+            android:src="@drawable/umeng_update_close_bg_normal"
+            android:layout_height="@dimen/dp_25" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/name_preservation"
+        android:layout_width="@dimen/dp_300"
+        android:text="保存"
+         android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorWhite"
+        android:background="@color/green"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
+</LinearLayout>

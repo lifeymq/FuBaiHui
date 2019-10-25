@@ -1,16 +1,23 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
    xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
    android:orientation="vertical"
+    android:scrollbars="none"
    tools:context="com.example.lenovo.fubaihui.fragments.HomeFragment">
 
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       >
    <!-- TODO: Update blank fragment layout -->
    <com.youth.banner.Banner
       android:id="@+id/myban"
       android:layout_width="match_parent"
-      android:layout_height="@dimen/dp_150" />
+      android:layout_height="@dimen/dp_180"
+       />
 
    <RadioGroup
       android:id="@+id/rg"
@@ -65,14 +72,14 @@
    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dp_30"
       android:gravity="center"
       android:orientation="horizontal">
 
       <TextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="——" />
+         android:text="————   " />
 
       <TextView
          android:layout_width="wrap_content"
@@ -82,19 +89,97 @@
       <TextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="——" />
+         android:text="   ————" />
    </LinearLayout>
 
-   <android.support.v7.widget.RecyclerView
-      android:id="@+id/myrec"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="1" />
 
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_marginTop="@dimen/dp_10"
+          android:layout_weight="1">
+
+         <ImageView
+             android:id="@+id/iv1"
+             android:layout_width="@dimen/dp_200"
+             android:layout_height="@dimen/dp_200"
+             android:src="@mipmap/ic_launcher"
+             android:scaleType="center"
+             />
+         <ImageView
+             android:id="@+id/iv2"
+             android:layout_marginLeft="@dimen/dp_5"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/dp_94"
+             android:src="@mipmap/ic_launcher"
+             android:layout_toRightOf="@id/iv1"
+             android:scaleType="center"
+             />
+
+
+         <ImageView
+             android:id="@+id/iv3"
+             android:layout_marginTop="@dimen/dp_10"
+             android:layout_width="@dimen/dp_75"
+             android:layout_marginLeft="@dimen/dp_5"
+             android:layout_height="@dimen/dp_95"
+             android:src="@mipmap/ic_launcher"
+             android:layout_toRightOf="@id/iv1"
+             android:layout_below="@id/iv2"
+             android:scaleType="center"
+             />
+
+         <ImageView
+             android:id="@+id/iv4"
+             android:layout_width="@dimen/dp_75"
+             android:layout_height="@dimen/dp_95"
+             android:layout_marginLeft="@dimen/dp_5"
+             android:layout_marginTop="@dimen/dp_10"
+             android:src="@mipmap/ic_launcher"
+             android:layout_below="@id/iv2"
+             android:layout_toRightOf="@id/iv3"
+             android:scaleType="center"
+             tools:ignore="RtlHardcoded" />
+
+
+
+
+      </RelativeLayout>
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/dp_15"
+    android:background="@drawable/home_shape1"
+    >
    <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/dp_10"
+       android:gravity="center"
+       android:maxEms="2"
       android:text="平台公告" />
+
+   <com.superluo.textbannerlibrary.TextBannerView
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/dp_38"
+       android:layout_marginLeft="@dimen/dp_10"
+       android:layout_marginRight="@dimen/dp_10"
+       android:id="@+id/tvban"
+       android:layoutDirection="inherit"
+       app:setGravity="center"
+       app:setDirection="bottom_to_top"
+       />
 
 
 </LinearLayout>
+
+
+   </LinearLayout>
+</ScrollView>

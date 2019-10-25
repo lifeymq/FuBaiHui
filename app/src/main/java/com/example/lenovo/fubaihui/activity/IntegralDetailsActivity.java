@@ -36,6 +36,8 @@ public class IntegralDetailsActivity extends BaseMvpActivity {
    ImageView detailsLogo1;
    @BindView(R.id.details_title1)
    TextView detailsTitle1;
+   @BindView(R.id.fish_integral)
+   ImageView fishintegral;
    private Integral_show.DataBean dataBean;
    private String id;
    private String latitude;
@@ -62,6 +64,12 @@ public class IntegralDetailsActivity extends BaseMvpActivity {
          @Override
          public void onClick(View v) {
             dao();
+         }
+      });
+      fishintegral.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            finish();
          }
       });
    }

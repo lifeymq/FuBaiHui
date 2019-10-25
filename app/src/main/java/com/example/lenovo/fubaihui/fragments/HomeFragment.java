@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -14,9 +12,9 @@ import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
-import com.example.lenovo.fubaihui.activity.Fbh_ShopActivity;
 import com.example.lenovo.fubaihui.activity.FranchiseeActivity;
-import com.example.lenovo.fubaihui.activity.Inte_ShopActivity;
+import com.example.lenovo.fubaihui.activity.FuBaiHuiStoreActivity;
+import com.example.lenovo.fubaihui.activity.IntegralActivity;
 import com.example.lenovo.fubaihui.activity.MemberActivity;
 import com.example.lenovo.fubaihui.bean.Home_Choiceness;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
@@ -27,6 +25,7 @@ import com.example.lenovo.fubaihui.model.TestModel;
 import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
 import com.superluo.textbannerlibrary.TextBannerView;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
