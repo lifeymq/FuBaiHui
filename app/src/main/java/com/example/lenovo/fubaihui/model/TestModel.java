@@ -62,15 +62,15 @@ public class TestModel implements ICommonModel {
                   params[0]), whichApi, presenterCallBack);
               break;
 
-           case ApiConfig.POST_HOME_CHOICENESS:
-              manager.method(manager.getNetService(Config.BASEURL1).getHomeChoiceness(), whichApi,
-                  presenterCallBack);
-              break;
+         case ApiConfig.POST_HOME_CHOICENESS:
+            manager.method(manager.getNetService(Config.BASEURL1).getHomeChoiceness(), whichApi,
+                presenterCallBack);
+            break;
 
-           case ApiConfig.POST_FRANCHISEEDETAILS:
-              RequestBody build = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                  .addFormDataPart("id", (String) params[0])
-                  .build();
+         case ApiConfig.POST_FRANCHISEEDETAILS:
+            RequestBody build = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("id", (String) params[0])
+                .build();
 
               //RequestBody requestBody = RequestBody.create(MediaType.parse("application"), (String) params[0].toString());
               manager.method(manager.getNetService(Config.BASEURL1).getDetailsInfo(build), whichApi,

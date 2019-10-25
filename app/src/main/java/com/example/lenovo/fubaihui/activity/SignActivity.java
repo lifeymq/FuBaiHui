@@ -3,11 +3,7 @@ package com.example.lenovo.fubaihui.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -22,6 +18,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.SignBean;
