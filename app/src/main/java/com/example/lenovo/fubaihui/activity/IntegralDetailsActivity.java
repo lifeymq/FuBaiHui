@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.DetailsInfo;
-import com.example.lenovo.fubaihui.bean.FranchiseeInfo;
+import com.example.lenovo.fubaihui.bean.Integral_show;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.Config;
@@ -22,12 +22,10 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class FranchiseeDetailsActivity extends BaseMvpActivity {
-
-   @BindView(R.id.tv_details_name)
-   TextView tvDetailsName;
+public class IntegralDetailsActivity extends BaseMvpActivity {
+   @BindView(R.id.details_biao)
+   TextView detailsBiao;
    @BindView(R.id.details_logo)
    ImageView detailsLogo;
    @BindView(R.id.details_title)
@@ -40,56 +38,63 @@ public class FranchiseeDetailsActivity extends BaseMvpActivity {
    TextView detailsTitle1;
    @BindView(R.id.fish_integral)
    ImageView fishintegral;
+   private Integral_show.DataBean dataBean;
    private String id;
+   private String latitude;
+   private String longitude;
    private String address_detail;
 
 
    @Override
-   public ICommonModel setModel() {
-      return new TestModel();
-   }
-
-   private String latitude;
-   private String longitude;
-
-   @Override
    public void initView() {
       super.initView();
-      Intent intent = getIntent();
-      FranchiseeInfo.DataBean data = (FranchiseeInfo.DataBean) intent.getSerializableExtra("data");
-      String name = data.getName();
-      tvDetailsName.setText(name);
-      Glide.with(this).load(Config.BASEURL1 + data.getLogo())
+
+      Bundle extras = getIntent().getExtras();
+      dataBean = (Integral_show.DataBean) extras.get("data");
+      id = dataBean.getId();
+      detailsTitle.setText(dataBean.getName());
+      Glide.with(this).load(Config.BASEURL1 + dataBean.getLogo())
           .placeholder(R.drawable.test1)
           .into(detailsLogo);
-      detailsTitle.setText(name);
-      detailsTitle1.setText(name);
+      detailsBiao.setText(dataBean.getName());
 
-      //id
-      id = data.getId();
+      detailsTitle1.setText(dataBean.getName());
 
-      //经度
-/*      longitudes = data.getLongitude();
-      //维度
-      latitude = data.getLatitude();*/
+      detailsLogo1.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            dao();
+         }
+      });
       fishintegral.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             finish();
          }
       });
-
    }
 
-   @Override
-   public int getLayoutId() {
-      return R.layout.activity_franchisee_details;
+   private void dao() {
+      if (!isInstallByread("com.autonavi.minimap")) {
+         Toast.makeText(getApplicationContext(), "请先安装高德地图客户端", Toast.LENGTH_SHORT).show();
+         return;
+      }
+      StringBuffer stringBuffer = new StringBuffer("androidamap://navi?sourceApplication=")
+          .append("amap");
+      stringBuffer.append("&lat=").append(latitude)
+          .append("&lon=").append(longitude).append("&keywords=" + address_detail)
+          .append("&dev=").append(0)
+          .append("&style=").append(2);
+      Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(stringBuffer.toString()));
+      intent.setPackage("com.autonavi.minimap");
+      startActivity(intent);
    }
 
-   @Override
-   public void setUp() {
-      mPresenter.getData(ApiConfig.POST_FRANCHISEEDETAILS, id);
+   //判断
+   private boolean isInstallByread(String packageName) {
+      return new File("/data/data/" + packageName).exists();
    }
+
 
    @Override
    public void onSuccess(int whichApi, Object successResult) {
@@ -104,27 +109,20 @@ public class FranchiseeDetailsActivity extends BaseMvpActivity {
       }
    }
 
-   @OnClick(R.id.details_logo1)
-   public void onClick() {
-      if (!isInstallByread("com.autonavi.minimap")) {
-         Toast.makeText(getApplicationContext(), "请先安装高德地图客户端", Toast.LENGTH_SHORT).show();
-         return;
-      }
 
-      StringBuffer stringBuffer = new StringBuffer("androidamap://navi?sourceApplication=")
-          .append("amap");
-      stringBuffer.append("&lat=").append(latitude)
-          .append("&lon=").append(longitude).append("&keywords=" + address_detail)
-          .append("&dev=").append(0)
-          .append("&style=").append(2);
-      Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(stringBuffer.toString()));
-      intent.setPackage("com.autonavi.minimap");
-      startActivity(intent);
-
+   @Override
+   public ICommonModel setModel() {
+      return new TestModel();
    }
 
-   private boolean isInstallByread(String packageName) {
-      return new File("/data/data/" + packageName).exists();
+   @Override
+   public int getLayoutId() {
+      return R.layout.activity_integral_details;
+   }
+
+   @Override
+   public void setUp() {
+      mPresenter.getData(ApiConfig.POST_FRANCHISEEDETAILS, id);
    }
 
 }

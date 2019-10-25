@@ -151,9 +151,9 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_45"
-    android:layout_marginLeft="@dimen/dp_5"
-    android:layout_marginRight="@dimen/dp_5"
+    android:layout_height="@dimen/dp_50"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
     android:gravity="center"
     android:background="@drawable/home_shape1"
     >
@@ -164,22 +164,15 @@
        android:gravity="center"
        android:maxEms="2"
       android:text="平台公告" />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="今日头条："
-    android:textStyle="normal"
-    android:textSize="@dimen/dp_16"
-    android:layout_marginLeft="@dimen/dp_10"
-    />
 
    <com.superluo.textbannerlibrary.TextBannerView
        android:layout_width="match_parent"
        android:layout_height="@dimen/dp_38"
-       android:layout_marginLeft="@dimen/dp_3"
+       android:layout_marginLeft="@dimen/dp_10"
        android:layout_marginRight="@dimen/dp_10"
        android:id="@+id/tvban"
        android:layoutDirection="inherit"
+       app:setGravity="center"
        app:setDirection="bottom_to_top"
        />
 

@@ -23,10 +23,8 @@ public class FranchiseeActivity extends BaseMvpActivity {
 
    @BindView(R.id.rv_franchisee)
    RecyclerView rvFranchisee;
-   @BindView(R.id.iv)
-   ImageView iv;
-
-
+   @BindView(R.id.fish_integral)
+   ImageView fishintegral;
    private List<FranchiseeInfo.DataBean> dataLists = new ArrayList<>();
    private FranchiseeAdapter franchiseeAdapter;
 
@@ -50,17 +48,12 @@ public class FranchiseeActivity extends BaseMvpActivity {
             startActivity(intent);
          }
       });
-
-
-      iv.setOnClickListener(new View.OnClickListener() {
+      fishintegral.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             finish();
          }
       });
-
-
-
    }
 
    @Override
@@ -88,9 +81,5 @@ public class FranchiseeActivity extends BaseMvpActivity {
             break;
       }
    }
-
-
-
-
 
 }
