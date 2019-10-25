@@ -1,0 +1,132 @@
+Index: app/src/main/java/com/example/lenovo/fubaihui/activity/MainActivity.java
+===================================================================
+--- app/src/main/java/com/example/lenovo/fubaihui/activity/MainActivity.java	(revision b83cb117a74b0f9ee0490bbfcc3183c480e2108d)
++++ app/src/main/java/com/example/lenovo/fubaihui/activity/MainActivity.java	(revision b83cb117a74b0f9ee0490bbfcc3183c480e2108d)
+@@ -1,100 +0,0 @@
+-package com.example.lenovo.fubaihui.activity;
+-
+-import android.support.design.widget.TabLayout;
+-import android.support.v4.app.Fragment;
+-import android.support.v4.app.FragmentManager;
+-import android.support.v4.view.ViewPager;
+-import android.support.v7.widget.Toolbar;
+-import android.util.Log;
+-
+-import com.example.lenovo.fubaihui.R;
+-import com.example.lenovo.fubaihui.adapters.BanViewPager;
+-import com.example.lenovo.fubaihui.adapters.MyVpFragmtAdapter;
+-import com.example.lenovo.fubaihui.bean.TeamerRankInfo;
+-import com.example.lenovo.fubaihui.fragments.CommentFragment;
+-import com.example.lenovo.fubaihui.fragments.HomeFragment;
+-import com.example.lenovo.fubaihui.fragments.MineFragment;
+-import com.example.lenovo.fubaihui.fragments.ShopFragment;
+-import com.example.lenovo.fubaihui.frame.ApiConfig;
+-import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
+-import com.example.lenovo.fubaihui.frame.ICommonModel;
+-import com.example.lenovo.fubaihui.model.TestModel;
+-
+-import java.util.ArrayList;
+-
+-import butterknife.BindView;
+-
+-public class MainActivity extends BaseMvpActivity {
+-
+-
+-    @BindView(R.id.mytoolbar)
+-    Toolbar mMytoolbar;
+-    @BindView(R.id.mytab)
+-    TabLayout mMytab;
+-    @BindView(R.id.myvp)
+-    BanViewPager mMyvp;
+-
+-    private ArrayList<Fragment> fragments;
+-    private FragmentManager fragmentManager;
+-    private MyVpFragmtAdapter adapter;
+-
+-    @Override
+-    public ICommonModel setModel() {
+-        return new TestModel();
+-    }
+-
+-    @Override
+-    public int getLayoutId() {
+-        return R.layout.activity_main;
+-    }
+-
+-    @Override
+-    public void setUp() {
+-        mPresenter.getData(ApiConfig.GET_PERSON_RANKING_RESULT_TEST);
+-    }
+-
+-    @Override
+-    public void onSuccess(int whichApi, Object successResult) {
+-        switch (whichApi) {
+-            case ApiConfig.GET_PERSON_RANKING_RESULT_TEST:
+-                TeamerRankInfo info = (TeamerRankInfo) successResult;
+-                Log.e("睚眦", info.toString() + "");
+-                break;
+-        }
+-    }
+-
+-
+-    @Override
+-    public void initView() {
+-        super.initView();
+-
+-        mMytoolbar.setTitle("");
+-
+-        fragments = new ArrayList<>();
+-//        ArrayList<String> titles = new ArrayList<>();
+-        fragments.add(new HomeFragment());
+-        fragments.add(new CommentFragment());
+-        fragments.add(new ShopFragment());
+-        fragments.add(new MineFragment());
+-
+-        adapter = new MyVpFragmtAdapter(getSupportFragmentManager(), fragments);
+-        mMyvp.setAdapter(adapter);
+-        mMytab.setupWithViewPager(mMyvp);
+-        mMytab.getTabAt(0).setIcon(R.drawable.home_tab1).setText("首页");
+-        mMytab.getTabAt(1).setIcon(R.drawable.home_tab2).setText("商品点评");
+-        mMytab.getTabAt(2).setIcon(R.drawable.home_tab3).setText("购物车");
+-        mMytab.getTabAt(3).setIcon(R.drawable.home_tab4).setText("我的");
+-
+-
+-//        titles.add("首页");
+-//        titles.add("商品点评");
+-//        titles.add("购物车");
+-//        titles.add("我的");
+-//        mMytab.addTab(mMytab.newTab().setIcon(getResources().getDrawable(R.drawable.home_tab1)).setText(titles.get(0)));
+-//        mMytab.addTab(mMytab.newTab().setIcon(getResources().getDrawable(R.drawable.home_tab2)).setText(titles.get(1)));
+-//        mMytab.addTab(mMytab.newTab().setIcon(getResources().getDrawable(R.drawable.home_tab3)).setText(titles.get(2)));
+-//        mMytab.addTab(mMytab.newTab().setIcon(getResources().getDrawable(R.drawable.home_tab4)).setText(titles.get(3)));
+-
+-
+-    }
+-}
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\n\nandroid {\n    compileSdkVersion rootProject.ext.compileSdkVersion\n    defaultConfig {\n        applicationId \"com.cheng.fubaihui\"\n        minSdkVersion rootProject.ext.minSdkVersion\n        targetSdkVersion rootProject.ext.targetSdkVersion\n        versionCode rootProject.ext.versionCode\n        versionName rootProject.ext.versionName\n        testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n    }\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n        }\n    }\n}\n\ndependencies {\n    implementation fileTree(include: ['*.jar'], dir: 'libs')\n    implementation \"com.android.support:appcompat-v7:$supportVsersion\"\n    implementation \"com.android.support.constraint:constraint-layout:$constraint\"\n    testImplementation 'junit:junit:4.12'\n    androidTestImplementation 'com.android.support.test:runner:1.0.2'\n    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'\n    api \"com.squareup.retrofit2:retrofit:$retrofit2\"\n    api \"com.squareup.retrofit2:converter-gson:$retrofit2\"\n    api \"com.squareup.retrofit2:converter-jackson:$retrofit2\"\n    api \"com.squareup.retrofit2:adapter-rxjava2:$retrofit2\"\n    api \"io.reactivex.rxjava2:rxjava:$rxjava2\"\n    api \"io.reactivex.rxjava2:rxandroid:$rxjava2\"\n    api \"com.jakewharton:butterknife:$butterknife\"\n    annotationProcessor \"com.jakewharton:butterknife-compiler:$butterknife\"\n    implementation files('libs/fastjson-1.2.41.jar')\n    implementation \"com.squareup.okhttp3:okhttp:$okhttp3\"\n    implementation \"com.squareup.okhttp3:logging-interceptor:$ok3log\"\n    implementation project(':utils')\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision b83cb117a74b0f9ee0490bbfcc3183c480e2108d)
++++ app/build.gradle	(date 1571646294791)
+@@ -22,6 +22,7 @@
+     implementation fileTree(include: ['*.jar'], dir: 'libs')
+     implementation "com.android.support:appcompat-v7:$supportVsersion"
+     implementation "com.android.support.constraint:constraint-layout:$constraint"
++    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+@@ -37,5 +38,8 @@
+     implementation "com.squareup.okhttp3:okhttp:$okhttp3"
+     implementation "com.squareup.okhttp3:logging-interceptor:$ok3log"
+     implementation project(':utils')
+-
++    //tablayout侧滑,等
++    implementation 'com.android.support:design:28.0.0'
++    implementation 'com.youth.banner:banner:1.4.10'
++    implementation 'com.github.bumptech.glide:glide:4.9.0'
+ }

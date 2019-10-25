@@ -1,0 +1,113 @@
+Index: app/src/main/res/layout/activity_main.xml
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision b83cb117a74b0f9ee0490bbfcc3183c480e2108d)
++++ app/src/main/res/layout/activity_main.xml	(revision b83cb117a74b0f9ee0490bbfcc3183c480e2108d)
+@@ -1,54 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:orientation="vertical"
+-    android:fitsSystemWindows="true"
+-    tools:context="com.example.lenovo.fubaihui.activity.MainActivity">
+-
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="vertical">
+-
+-        <android.support.v7.widget.Toolbar
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:autofillHints="?attr/actionBarSize"
+-            android:background="?attr/colorPrimary"
+-            android:id="@+id/mytoolbar">
+-
+-            <TextView
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:gravity="center"
+-                android:textSize="@dimen/dp_16"
+-                android:text="首页"
+-                />
+-
+-        </android.support.v7.widget.Toolbar>
+-
+-
+-        <com.example.lenovo.fubaihui.adapters.BanViewPager
+-            android:id="@+id/myvp"
+-            android:layout_width="match_parent"
+-            android:layout_height="0dp"
+-            android:isScrollContainer="true"
+-            android:layout_weight="1"/>
+-
+-        <android.support.design.widget.TabLayout
+-            android:id="@+id/mytab"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            app:tabSelectedTextColor="#99ff0000" />
+-
+-
+-
+-
+-
+-
+-    </LinearLayout>
+-
+-</android.support.v4.widget.DrawerLayout>
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.example.lenovo.fubaihui\">\n\n    <uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\" />\n    <uses-permission android:name=\"android.permission.INTERNET\" />\n    <uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\" />\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\n    <uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />\n    <uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />\n    <uses-permission android:name=\"android.permission.READ_CALENDAR\" />\n    <uses-permission android:name=\"android.permission.WRITE_CALENDAR\" />\n    <uses-permission android:name=\"android.permission.READ_SETTINGS\" />\n    <uses-permission android:name=\"android.permission.INSTALL_SHORTCUT\" />\n    <uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\" />\n    <uses-permission android:name=\"android.permission.VIBRATE\" />\n    <uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />\n    <uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\n    <uses-permission android:name=\"android.permission.DISABLE_KEYGUARD\" />\n    <uses-permission android:name=\"android.permission.WAKE_LOCK\" />\n    <uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\" />\n    <uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\" />\n    <uses-permission android:name=\"android.permission.GET_TASKS\" />\n    <uses-permission android:name=\"android.permission.GET_PACKAGE_SIZE\" />\n    <uses-permission android:name=\"android.permission.CLEAR_APP_DATA\" />\n    <uses-permission android:name=\"android.permission.BLUETOOTH\" />\n    <!-- 震动权限 -->\n    <uses-permission android:name=\"android.permission.CAMERA\" />\n\n    <uses-feature android:name=\"android.hardware.camera\" />\n    <!-- 使用照相机权限 -->\n    <uses-feature android:name=\"android.hardware.camera.autofocus\" />\n\n    <uses-permission android:name=\"android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS\" />\n    <uses-permission android:name=\"androimd.permission.ACCESS_FINE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.READ_LOGS\" />\n    <application\n        android:name=\".frame.MyApplication\"\n        android:allowBackup=\"true\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/AppTheme\">\n        <activity android:name=\".activity.MainActivity\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision b83cb117a74b0f9ee0490bbfcc3183c480e2108d)
++++ app/src/main/AndroidManifest.xml	(date 1571648138135)
+@@ -1,6 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.example.lenovo.fubaihui">
++   xmlns:tools="http://schemas.android.com/tools"
++   package="com.example.lenovo.fubaihui">
+ 
+     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+     <uses-permission android:name="android.permission.INTERNET" />
+@@ -35,15 +36,18 @@
+     <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
+     <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+-    <uses-permission android:name="android.permission.READ_LOGS" />
++    <uses-permission android:name="android.permission.READ_LOGS"
++       tools:ignore="ProtectedPermissions" />
++
+     <application
+-        android:name=".frame.MyApplication"
+-        android:allowBackup="true"
+-        android:icon="@mipmap/ic_launcher"
+-        android:label="@string/app_name"
+-        android:roundIcon="@mipmap/ic_launcher_round"
+-        android:supportsRtl="true"
+-        android:theme="@style/AppTheme">
++       android:name=".frame.MyApplication"
++       android:allowBackup="true"
++       android:icon="@mipmap/ic_launcher"
++       android:label="@string/app_name"
++       android:roundIcon="@mipmap/ic_launcher_round"
++       android:supportsRtl="true"
++       android:theme="@style/AppTheme"
++       android:usesCleartextTraffic="true">
+         <activity android:name=".activity.MainActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+@@ -51,6 +55,7 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++        <activity android:name=".activity.FranchiseeDetailsActivity"></activity>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
