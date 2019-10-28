@@ -80,9 +80,16 @@ public class MineFragment extends Fragment {
    @BindView(R.id.ll_mine_order)
    TextView llMineOrder;
    Unbinder unbinder;
+   private static final String ARG_PARAM1 = "phone";
+   private String mPhone;
+    private String phonename;
 
-   public MineFragment() {
-      // Required empty public constructor
+    public static MineFragment newInstance(String phone) {
+      MineFragment fragment = new MineFragment();
+      Bundle bundle = new Bundle();
+      bundle.putString(ARG_PARAM1, phone);
+      fragment.setArguments(bundle);
+      return fragment;
    }
 
 
@@ -96,11 +103,40 @@ public class MineFragment extends Fragment {
    }
 
    @Override
+   public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      if (getArguments() != null) {
+         mPhone = getArguments().getString(ARG_PARAM1);
+      }
+   }
+
+   @Override
    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
       initView();
       getPermission();
    }
+
+    private void getPermission() {
+        XXPermissions.with(getActivity())
+                .constantRequest() //可设置被拒绝后继续申请，直到用户授权或者永久拒绝
+                //.permission(Permission.SYSTEM_ALERT_WINDOW, Permission.REQUEST_INSTALL_PACKAGES)
+                // 支持请求 6.0 悬浮窗权限 8.0 请求安装权限
+                .permission(Manifest.permission.CAMERA, Manifest.permission
+                        .CALL_PHONE)
+                //不指定权限则自动获取清单中的危险权限
+                .request(new OnPermission() {
+                    @Override
+                    public void hasPermission(List<String> granted, boolean isAll) {
+                    }
+
+                    @Override
+                    public void noPermission(List<String> denied, boolean quick) {
+                        if (denied.size() != 0) Toast.makeText(getActivity(), "拒绝权限影响您正常使用", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        //XXPermissions.gotoPermissionSettings(this);//跳转到权限设置页面
+    }
 
    private void initView() {
       EventBus.getDefault().register(this);
@@ -108,6 +144,13 @@ public class MineFragment extends Fragment {
           .circleCrop()
           .into(ivMineImage);
 
+
+      tvMineAccount.setText(mPhone);
+      SharedPreferences user = getContext().getSharedPreferences("user1",getContext().MODE_PRIVATE);
+      SharedPreferences.Editor edit = user.edit();
+      edit.putBoolean("isBoolean1",true);
+      edit.putString("phonename",phonename);
+      edit.commit();
    }
 
    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -120,29 +163,13 @@ public class MineFragment extends Fragment {
       edit.commit();
    }
 
-   @Override
-   public void onResume() {
-      super.onResume();
-      SharedPreferences user = getContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
-      String path = user.getString("path", null);
-      Boolean isBoolean = user.getBoolean("isBoolean",false);
-      if(isBoolean==true){
-         Glide.with(getContext()).load(Uri.parse(path)).circleCrop().into(ivMineImage);
-      }
-   }
-   @Override
-   public void onDestroyView() {
-      super.onDestroyView();
-      unbinder.unbind();
-      EventBus.getDefault().unregister(this);
-   }
-
    @OnClick({R.id.ll_mine_data, R.id
        .ll_mine_discount, R.id.ll_mine_setting, R.id.ll_mine_recommend, R.id
        .ll_mine_recommend_num, R.id.ll_mine_address, R.id.ll_mine_settled_in, R.id
        .ll_mine_login, R.id.ll_mine_phone, R.id.ll_mine_friend, R.id.ll_mine_collection, R.id
        .ll_mine_wallet, R.id.ll_mine_order})
    public void onClick(View view) {
+       phonename = tvMineAccount.getText().toString();
       switch (view.getId()) {
          case R.id.ll_mine_data:
             startActivity(new Intent(getActivity(),DataActivity.class));
@@ -189,25 +216,26 @@ public class MineFragment extends Fragment {
       }
    }
 
-   private void getPermission() {
-      XXPermissions.with(getActivity())
-          .constantRequest() //可设置被拒绝后继续申请，直到用户授权或者永久拒绝
-          //.permission(Permission.SYSTEM_ALERT_WINDOW, Permission.REQUEST_INSTALL_PACKAGES)
-          // 支持请求 6.0 悬浮窗权限 8.0 请求安装权限
-          .permission(Manifest.permission.CAMERA, Manifest.permission
-              .CALL_PHONE)
-          //不指定权限则自动获取清单中的危险权限
-          .request(new OnPermission() {
-             @Override
-             public void hasPermission(List<String> granted, boolean isAll) {
-             }
-
-             @Override
-             public void noPermission(List<String> denied, boolean quick) {
-                if (denied.size() != 0) Toast.makeText(getActivity(), "拒绝权限影响您正常使用", Toast.LENGTH_SHORT).show();
-             }
-          });
-      //XXPermissions.gotoPermissionSettings(this);//跳转到权限设置页面
-   }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences user = getContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
+        String path = user.getString("path", null);
+        Boolean isBoolean = user.getBoolean("isBoolean",false);
+        if(isBoolean==true){
+            Glide.with(getContext()).load(Uri.parse(path)).circleCrop().into(ivMineImage);
+        }
+        SharedPreferences user1 = getContext().getSharedPreferences("user1",getContext().MODE_PRIVATE);
+        String phonename = user1.getString("phonename", null);
+        Boolean isBoolean1 = user1.getBoolean("isBoolean1",false);
+        if(isBoolean1==true){
+            tvMineAccount.setText(phonename);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+        EventBus.getDefault().unregister(this);
+    }
 }

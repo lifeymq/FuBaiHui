@@ -26,8 +26,6 @@ import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
-import com.yiyatech.utils.ext.ToastUtils;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -95,8 +93,8 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
                 RegisterBean registerBean = (RegisterBean) successResult;
                 code1 = registerBean.getCode();
                 Log.i("睚眦",registerBean.toString());
+                msg = registerBean.getMsg();
                 if (code1 == 200){
-                    msg = registerBean.getMsg();
                     Intent intent = new Intent(RegisterActivity.this, SignActivity.class);
                     startActivity(intent);
                     showToast(msg+"");
@@ -120,8 +118,8 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
                 Invitationcode invitationcode = (Invitationcode) successResult;
                 Log.i("睚眦",invitationcode.toString());
                 code = invitationcode.getCode();
+                msg1 = invitationcode.getMsg();
                 if (code == 200){
-                    msg1 = invitationcode.getMsg();
                     recommend_code = invitationcode.getData().getRecommend_code();
                     uid = invitationcode.getData().getUid();
                 }else {
@@ -160,18 +158,16 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
             case R.id.register_button: //注册按钮
                 if (TextUtils.isEmpty(mView.getPhone()) || TextUtils.isEmpty(mView.getVerifyCode()) ||
                       TextUtils.isEmpty(ma) || TextUtils.isEmpty(password)){
-                   showToast(msg+"");
+                   showToast("不能为空");
                 }else{
                     if (registerBox.isChecked()==true){
                         if (huocode.equals(content)){
-                            mPresenter.getData(ApiConfig.GET_REGISTER,phone,password,recommend_code,1+"",content);
+                            mPresenter.getData(ApiConfig.GET_REGISTER,phone,password,recommend_code,uid,content);
                             if (code1 == 200){
                                 Intent intent = new Intent(RegisterActivity.this, SignActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
-                        }else {
-                            showToast(msg+"");
                         }
                     } else {
                         showToast("您没有同意阅读");

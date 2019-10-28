@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
+import com.example.lenovo.fubaihui.activity.MainActivity;
+import com.example.lenovo.fubaihui.activity.SignActivity;
 import com.example.lenovo.fubaihui.dataactivity.AboutActivity;
 import com.example.lenovo.fubaihui.dataactivity.AdministrationActivity;
 import com.example.lenovo.fubaihui.dataactivity.NameActivity;
@@ -31,12 +33,15 @@ import com.example.lenovo.fubaihui.dataactivity.OpinionActivity;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
+import com.example.lenovo.fubaihui.utils.SpUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.umeng.socialize.net.dplus.CommonNetImpl.UID;
 
 public class DataActivity extends BaseMvpActivity {
 
@@ -72,6 +77,8 @@ public class DataActivity extends BaseMvpActivity {
     @BindView(R.id.item_tool)
     Toolbar itemTool;
     private PopupWindow popupWindow;
+    public static final String SP_TYPE ="sp_type";
+    public static final String USER_TYPE ="user_type";
 
     @Override
     public ICommonModel setModel() {
@@ -137,6 +144,16 @@ public class DataActivity extends BaseMvpActivity {
                 /*Intent btn = new Intent(DataActivity.this,SignActivity.class);
                 startActivity(btn);
                 finish();*/
+                Boolean type = (Boolean) SpUtil.getParam(SP_TYPE, false);
+                if (type) {
+                    Integer uid = (Integer) SpUtil.getParam(UID, 0);
+                    Integer user_type = (Integer) SpUtil.getParam(USER_TYPE, 0);
+                    Intent intent = new Intent(DataActivity.this,SignActivity.class);
+                    intent.putExtra(UID , uid+"");
+                    intent.putExtra(USER_TYPE , user_type+"");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
         }
     }

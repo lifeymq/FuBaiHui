@@ -9,10 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.adapters.BanViewPager;
@@ -25,10 +27,13 @@ import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
+import com.example.lenovo.fubaihui.utils.SpUtil;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+
+import static com.umeng.socialize.net.dplus.CommonNetImpl.UID;
 
 public class MainActivity extends BaseMvpActivity {
 
@@ -42,15 +47,32 @@ public class MainActivity extends BaseMvpActivity {
    TabLayout mMytab;
    @BindView(R.id.toolbartitle)
    TextView toolbartitle;
+   private long exitTime = 0;
 
    private ArrayList<Fragment> fragments;
    private MyVpFragmtAdapter adapter;
+    private String phone;
 
-   @Override
+    @Override
    public ICommonModel setModel() {
       return new TestModel();
    }
 
+
+          @Override
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+           if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+                  if((System.currentTimeMillis()-exitTime) > 2000){
+                         Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                         exitTime = System.currentTimeMillis();
+                     } else {
+                         finish();
+                         System.exit(0);
+                     }
+                  return true;
+              }
+           return super.onKeyDown(keyCode, event);
+       }
    @Override
    public int getLayoutId() {
       return R.layout.activity_main;
@@ -72,7 +94,10 @@ public class MainActivity extends BaseMvpActivity {
    public void initView() {
       super.initView();
 
-      mMytoolbar.setTitle("");
+       Intent intent = getIntent();
+       phone = intent.getStringExtra("phone");
+       Log.i("睚眦",phone+"+++++++");
+       mMytoolbar.setTitle("");
       setSupportActionBar(mMytoolbar);
       //设置默认返回箭头
       //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -83,7 +108,7 @@ public class MainActivity extends BaseMvpActivity {
       fragments.add(new HomeFragment());
       fragments.add(new CommentFragment());
       fragments.add(new ShopFragment());
-      fragments.add(new MineFragment());
+      fragments.add(MineFragment.newInstance(phone));
 
       adapter = new MyVpFragmtAdapter(getSupportFragmentManager(), fragments);
       mMyvp.setAdapter(adapter);

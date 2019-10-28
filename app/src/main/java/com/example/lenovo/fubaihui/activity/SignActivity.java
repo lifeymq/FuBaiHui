@@ -3,7 +3,13 @@ package com.example.lenovo.fubaihui.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -18,11 +24,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-
+import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.SignBean;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
@@ -30,6 +33,8 @@ import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
 import com.example.lenovo.fubaihui.utils.SpUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,7 +60,7 @@ public class SignActivity extends BaseMvpActivity {
     @BindView(R.id.sign_boxtext)
     TextView signBoxtext;
     private String password;
-    private String user;
+    private String users;
     private int code;
     private String msg;
     public static final String SP_TYPE ="sp_type";
@@ -111,6 +116,7 @@ public class SignActivity extends BaseMvpActivity {
                 Selection.setSelection(text, text.length());
             }
         } );
+
     }
 
     @Override
@@ -147,40 +153,44 @@ public class SignActivity extends BaseMvpActivity {
                 Log.i("睚眦",signBean.toString());
                 code = signBean.getCode();
                 msg = signBean.getMsg();
-                if (code == 200) {
-                    //账号密码输入成功
-                    msg = signBean.getMsg();
-                    Intent intent = new Intent(SignActivity.this, MainActivity.class);
-                    data = signBean.getData();
-                    intent.putExtra(UID , data.getUid()+"");
-                    intent.putExtra(USER_TYPE , data.getUser_type()+"");
+                    if (code == 200) {
+                        //账号密码输入成功
+                        msg = signBean.getMsg();
+                        Intent intent = new Intent(SignActivity.this, MainActivity.class);
+                        intent.putExtra("phone",users);
+                        data = signBean.getData();
+                        intent.putExtra(UID , data.getUid()+"");
+                        intent.putExtra(USER_TYPE , data.getUser_type()+"");
 
-                    SpUtil.setParam(SP_TYPE,true);
-                    SpUtil.setParam(UID, data.getUid());
-                    SpUtil.setParam(USER_TYPE, data.getUser_type());
+                        SpUtil.setParam(SP_TYPE,true);
+                        SpUtil.setParam(UID, data.getUid());
+                        SpUtil.setParam(USER_TYPE, data.getUser_type());
 
-                    startActivity(intent);
-                    showToast(msg+"");
-                    finish();
-                }else {
-                    showToast(msg+"");
-                }
+                        startActivity(intent);
+                        showToast(msg+"");
+                        finish();
+                    }else {
+                        showToast(msg+"");
+                    }
                 break;
         }
     }
 
     @OnClick({R.id.sign_button, R.id.sign_register, R.id.sign_modify, R.id.sign_box})
     public void onViewClicked(View view) {
-        user = signUser.getText().toString();
+        users = signUser.getText().toString();
         password = signPassword.getText().toString();
         switch (view.getId()) {
             case R.id.sign_button: //登录按钮
-                if (!TextUtils.isEmpty(user) && !TextUtils.isEmpty(password)){
+                if (!TextUtils.isEmpty(users) && !TextUtils.isEmpty(password)){
                     if (signBox.isChecked() == true) {
-                        mPresenter.getData(ApiConfig.GET_SIGN,user,password);
+                        mPresenter.getData(ApiConfig.GET_SIGN,users,password);
                         if (code == 200){
+
                             Intent intent0 = new Intent(SignActivity.this, MainActivity.class);
+                            intent0.putExtra("phone",users);
                             startActivity(intent0);
+
                             finish();
                         }
                     }else{
@@ -197,11 +207,16 @@ public class SignActivity extends BaseMvpActivity {
                 break;
             case R.id.sign_modify: //忘记密码
                 Intent intent2 = new Intent(SignActivity.this, ModifyActivity.class);
-                intent2.putExtra("user",user);
+                intent2.putExtra("user",users);
                 startActivity(intent2);
                 break;
             case R.id.sign_box: //CheckBox框
-
+                /*signUser.setText(users);
+                SharedPreferences user = getSharedPreferences("user",MODE_PRIVATE);
+                SharedPreferences.Editor edit = user.edit();
+                edit.putBoolean("isBoolean",true);
+                edit.putString("users",users);
+                edit.commit();*/
                 if (signBox.isChecked() == true){
                     signBoxtext.setTextColor(Color.parseColor("#E34435"));
                 }else {
@@ -210,4 +225,15 @@ public class SignActivity extends BaseMvpActivity {
                 break;
         }
     }
+
+   /* @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences user = getSharedPreferences("user",MODE_PRIVATE);
+        String path = user.getString("users", null);
+        Boolean isBoolean = user.getBoolean("isBoolean",false);
+        if(isBoolean==true){
+            signUser.setText(path);
+        }
+    }*/
 }
