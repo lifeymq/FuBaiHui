@@ -23,17 +23,14 @@ import com.example.lenovo.fubaihui.fragments.CommentFragment;
 import com.example.lenovo.fubaihui.fragments.HomeFragment;
 import com.example.lenovo.fubaihui.fragments.MineFragment;
 import com.example.lenovo.fubaihui.fragments.ShopFragment;
-import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
-import com.example.lenovo.fubaihui.utils.SpUtil;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 
-import static com.umeng.socialize.net.dplus.CommonNetImpl.UID;
 
 public class MainActivity extends BaseMvpActivity {
 
@@ -51,7 +48,6 @@ public class MainActivity extends BaseMvpActivity {
 
    private ArrayList<Fragment> fragments;
    private MyVpFragmtAdapter adapter;
-    private String phone;
 
     @Override
    public ICommonModel setModel() {
@@ -94,9 +90,6 @@ public class MainActivity extends BaseMvpActivity {
    public void initView() {
       super.initView();
 
-       Intent intent = getIntent();
-       phone = intent.getStringExtra("phone");
-       Log.i("睚眦",phone+"+++++++");
        mMytoolbar.setTitle("");
       setSupportActionBar(mMytoolbar);
       //设置默认返回箭头
@@ -108,7 +101,7 @@ public class MainActivity extends BaseMvpActivity {
       fragments.add(new HomeFragment());
       fragments.add(new CommentFragment());
       fragments.add(new ShopFragment());
-      fragments.add(MineFragment.newInstance(phone));
+      fragments.add(new MineFragment());
 
       adapter = new MyVpFragmtAdapter(getSupportFragmentManager(), fragments);
       mMyvp.setAdapter(adapter);

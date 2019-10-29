@@ -30,6 +30,7 @@ import com.example.lenovo.fubaihui.mainactivity.SettledinActivity;
 import com.example.lenovo.fubaihui.mainactivity.WalletActivity;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.XXPermissions;
+import com.yiyatech.utils.SharedPrefrenceUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,7 +48,8 @@ import butterknife.Unbinder;
  * A simple {@link Fragment} subclass.
  */
 public class MineFragment extends Fragment {
-   @BindView(R.id.iv_mine_image)
+    private static final String USER = "user";
+    @BindView(R.id.iv_mine_image)
    ImageView ivMineImage;
    @BindView(R.id.tv_mine_name)
    TextView tvMineName;
@@ -79,15 +81,14 @@ public class MineFragment extends Fragment {
    TextView llMineWallet;
    @BindView(R.id.ll_mine_order)
    TextView llMineOrder;
-   Unbinder unbinder;
-   private static final String ARG_PARAM1 = "phone";
-   private String mPhone;
+    private String mPhone;
     private String phonename;
+   Unbinder unbinder;
 
-    public static MineFragment newInstance(String phone) {
+
+    public static MineFragment newInstance() {
       MineFragment fragment = new MineFragment();
       Bundle bundle = new Bundle();
-      bundle.putString(ARG_PARAM1, phone);
       fragment.setArguments(bundle);
       return fragment;
    }
@@ -100,14 +101,6 @@ public class MineFragment extends Fragment {
       View view = inflater.inflate(R.layout.fragment_mine, container, false);
       unbinder = ButterKnife.bind(this, view);
       return view;
-   }
-
-   @Override
-   public void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      if (getArguments() != null) {
-         mPhone = getArguments().getString(ARG_PARAM1);
-      }
    }
 
    @Override
@@ -143,14 +136,8 @@ public class MineFragment extends Fragment {
       Glide.with(getActivity()).load(R.drawable.ic_fubaihui)
           .circleCrop()
           .into(ivMineImage);
-
-
-      tvMineAccount.setText(mPhone);
-      SharedPreferences user = getContext().getSharedPreferences("user1",getContext().MODE_PRIVATE);
-      SharedPreferences.Editor edit = user.edit();
-      edit.putBoolean("isBoolean1",true);
-      edit.putString("phonename",phonename);
-      edit.commit();
+       String phone = SharedPrefrenceUtils.getString(getContext(), USER);
+       tvMineAccount.setText(phone);
    }
 
    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -224,12 +211,6 @@ public class MineFragment extends Fragment {
         Boolean isBoolean = user.getBoolean("isBoolean",false);
         if(isBoolean==true){
             Glide.with(getContext()).load(Uri.parse(path)).circleCrop().into(ivMineImage);
-        }
-        SharedPreferences user1 = getContext().getSharedPreferences("user1",getContext().MODE_PRIVATE);
-        String phonename = user1.getString("phonename", null);
-        Boolean isBoolean1 = user1.getBoolean("isBoolean1",false);
-        if(isBoolean1==true){
-            tvMineAccount.setText(phonename);
         }
     }
     @Override

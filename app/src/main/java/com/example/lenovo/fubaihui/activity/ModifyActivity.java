@@ -3,7 +3,6 @@ package com.example.lenovo.fubaihui.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
-import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -109,11 +108,10 @@ public class ModifyActivity extends BaseMvpActivity {
                 ModifyBean modifyBean = (ModifyBean) successResult;
                 Log.i("睚眦",modifyBean.toString());
                 code1 = modifyBean.getCode();
+                msg = modifyBean.getMsg();
                 if (code1 == 200){
-                    msg = modifyBean.getMsg();
-                    showToast("修改成功");
-                    Intent intent = new Intent(ModifyActivity.this, SignActivity.class);
-                    startActivity(intent);
+                    showToast(msg+"");
+                    finish();
                 }else {
                     showToast(msg+"");
                 }
@@ -144,11 +142,10 @@ public class ModifyActivity extends BaseMvpActivity {
                         if (modifycode.equals(content)){
                             mPresenter.getData(ApiConfig.GET_MODIFY,1+"", phone, password,content);
                             if (code1 == 200){
-                                Intent intent = new Intent(ModifyActivity.this, SignActivity.class);
-                                startActivity(intent);
+                                finish();
                             }
                         }else {
-                            showToast("验证码有误");
+                            showToast(msg+"");
                         }
                 }
                 break;

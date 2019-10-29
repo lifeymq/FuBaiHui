@@ -3,29 +3,21 @@ package com.example.lenovo.fubaihui.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-
-import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.bean.SignBean;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
@@ -33,9 +25,7 @@ import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
 import com.example.lenovo.fubaihui.utils.SpUtil;
-
-import org.greenrobot.eventbus.EventBus;
-
+import com.yiyatech.utils.SharedPrefrenceUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -43,6 +33,7 @@ import static com.umeng.socialize.net.dplus.CommonNetImpl.UID;
 
 public class SignActivity extends BaseMvpActivity {
 
+    private static final String USER = "user";
     @BindView(R.id.sign_yan)
     ImageView signyan;
     @BindView(R.id.sign_user)
@@ -155,9 +146,7 @@ public class SignActivity extends BaseMvpActivity {
                 msg = signBean.getMsg();
                     if (code == 200) {
                         //账号密码输入成功
-                        msg = signBean.getMsg();
                         Intent intent = new Intent(SignActivity.this, MainActivity.class);
-                        intent.putExtra("phone",users);
                         data = signBean.getData();
                         intent.putExtra(UID , data.getUid()+"");
                         intent.putExtra(USER_TYPE , data.getUser_type()+"");
@@ -183,14 +172,12 @@ public class SignActivity extends BaseMvpActivity {
         switch (view.getId()) {
             case R.id.sign_button: //登录按钮
                 if (!TextUtils.isEmpty(users) && !TextUtils.isEmpty(password)){
+                    SharedPrefrenceUtils.saveString(this,USER,users);
                     if (signBox.isChecked() == true) {
                         mPresenter.getData(ApiConfig.GET_SIGN,users,password);
                         if (code == 200){
-
                             Intent intent0 = new Intent(SignActivity.this, MainActivity.class);
-                            intent0.putExtra("phone",users);
                             startActivity(intent0);
-
                             finish();
                         }
                     }else{
@@ -211,12 +198,6 @@ public class SignActivity extends BaseMvpActivity {
                 startActivity(intent2);
                 break;
             case R.id.sign_box: //CheckBox框
-                /*signUser.setText(users);
-                SharedPreferences user = getSharedPreferences("user",MODE_PRIVATE);
-                SharedPreferences.Editor edit = user.edit();
-                edit.putBoolean("isBoolean",true);
-                edit.putString("users",users);
-                edit.commit();*/
                 if (signBox.isChecked() == true){
                     signBoxtext.setTextColor(Color.parseColor("#E34435"));
                 }else {
@@ -225,15 +206,4 @@ public class SignActivity extends BaseMvpActivity {
                 break;
         }
     }
-
-   /* @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences user = getSharedPreferences("user",MODE_PRIVATE);
-        String path = user.getString("users", null);
-        Boolean isBoolean = user.getBoolean("isBoolean",false);
-        if(isBoolean==true){
-            signUser.setText(path);
-        }
-    }*/
 }

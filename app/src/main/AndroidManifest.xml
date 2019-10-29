@@ -37,8 +37,7 @@
    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
    <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-   <uses-permission
-      android:name="android.permission.READ_LOGS"
+   <uses-permission android:name="android.permission.READ_LOGS"
       tools:ignore="ProtectedPermissions" />
 
    <application
@@ -49,11 +48,11 @@
       android:roundIcon="@drawable/ic_fubaihui"
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
-      android:usesCleartextTraffic="true">
-      <activity android:name=".activity.SignActivity">
+      android:usesCleartextTraffic="true"
+       tools:ignore="GoogleAppIndexingWarning">
+      <activity android:name=".activity.SignActivity" >
          <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -83,7 +82,7 @@
         <activity android:name=".dataactivity.NameActivity" />
         <activity android:name=".dataactivity.AdministrationActivity" />
         <activity android:name=".dataactivity.OpinionActivity" />
-        <activity android:name=".dataactivity.AboutActivity"></activity>
+        <activity android:name=".dataactivity.AboutActivity"/>
     </application>
 
 </manifest>

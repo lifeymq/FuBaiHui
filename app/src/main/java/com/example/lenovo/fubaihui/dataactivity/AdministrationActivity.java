@@ -21,10 +21,13 @@ import com.example.lenovo.fubaihui.activity.ModifyActivity;
 import com.example.lenovo.fubaihui.activity.SignActivity;
 import com.example.lenovo.fubaihui.bean.CodeBean;
 import com.example.lenovo.fubaihui.bean.ModifyBean;
+import com.example.lenovo.fubaihui.fragments.MineFragment;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
 import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
+import com.example.lenovo.fubaihui.mainactivity.DataActivity;
 import com.example.lenovo.fubaihui.model.TestModel;
+import com.yiyatech.utils.SharedPrefrenceUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -36,6 +39,7 @@ import butterknife.OnClick;
 
 public class AdministrationActivity extends BaseMvpActivity {
 
+    private static final String USER = "user";
     @BindView(R.id.item_img)
     ImageView itemImg;
     @BindView(R.id.item_toolname)
@@ -76,6 +80,7 @@ public class AdministrationActivity extends BaseMvpActivity {
         itemTool.setTitle("");
         itemToolname.setText("修改密码");
         setSupportActionBar(itemTool);
+        phone = SharedPrefrenceUtils.getString(this, USER);
     }
 
     @Override
@@ -93,15 +98,17 @@ public class AdministrationActivity extends BaseMvpActivity {
                 if (code == 200){
                     content = codeBean.getContent();
                     showToast("发送成功,注意接收");
+                }else {
+                    showToast("请输入正确的手机号");
                 }
                 break;
             case ApiConfig.GET_MODIFY:
                 ModifyBean modifyBean = (ModifyBean) successResult;
                 Log.i("睚眦",modifyBean.toString());
                 code1 = modifyBean.getCode();
+                msg = modifyBean.getMsg();
                 if (code1 == 200){
-                    msg = modifyBean.getMsg();
-                    showToast("修改成功");
+                    showToast(msg+"");
                     finish();
                 }else {
                     showToast(msg+"");
@@ -120,12 +127,11 @@ public class AdministrationActivity extends BaseMvpActivity {
                 finish();
                 break;
             case R.id.administration_code: //获取验证码
-                Log.i("睚眦","==============="+phone);
                 mPresenter.getData(ApiConfig.GET_CODE, phone);
-                if (code == 200){
-                    CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(administrationCode, 60000, 1000);
-                    mCountDownTimerUtils.start();
-                }
+                    if (code == 200){
+                        CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(administrationCode, 60000, 1000);
+                        mCountDownTimerUtils.start();
+                    }
                 break;
             case R.id.administration_button: //确认修改
                 if (TextUtils.isEmpty(codename) || TextUtils.isEmpty(password1) || TextUtils.isEmpty(password2)){
@@ -137,8 +143,6 @@ public class AdministrationActivity extends BaseMvpActivity {
                             if (code1 == 200){
                                 finish();
                             }
-                        }else {
-                            showToast("验证码有误");
                         }
                     }else {
                         showToast("两次密码不一致");

@@ -34,6 +34,7 @@ import com.example.lenovo.fubaihui.frame.BaseMvpActivity;
 import com.example.lenovo.fubaihui.frame.ICommonModel;
 import com.example.lenovo.fubaihui.model.TestModel;
 import com.example.lenovo.fubaihui.utils.SpUtil;
+import com.yiyatech.utils.SharedPrefrenceUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -46,6 +47,7 @@ import static com.umeng.socialize.net.dplus.CommonNetImpl.UID;
 public class DataActivity extends BaseMvpActivity {
 
 
+    private static final String USER = "user";
     @BindView(R.id.item_img)
     ImageView itemImg;
     @BindView(R.id.hand_img)
@@ -96,6 +98,9 @@ public class DataActivity extends BaseMvpActivity {
         itemToolname.setText("个人资料");
         setSupportActionBar(itemTool);
         initPermission();
+
+        String number = SharedPrefrenceUtils.getString(this, USER);
+        numberData.setText(number);
     }
 
     @Override

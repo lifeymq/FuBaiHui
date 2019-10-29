@@ -95,8 +95,6 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
                 Log.i("睚眦",registerBean.toString());
                 msg = registerBean.getMsg();
                 if (code1 == 200){
-                    Intent intent = new Intent(RegisterActivity.this, SignActivity.class);
-                    startActivity(intent);
                     showToast(msg+"");
                     finish();
                 } else {
@@ -122,6 +120,7 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
                 if (code == 200){
                     recommend_code = invitationcode.getData().getRecommend_code();
                     uid = invitationcode.getData().getUid();
+                    showToast(msg1+"");
                 }else {
                     showToast(msg1+"");
                 }
@@ -164,8 +163,6 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
                         if (huocode.equals(content)){
                             mPresenter.getData(ApiConfig.GET_REGISTER,phone,password,recommend_code,uid,content);
                             if (code1 == 200){
-                                Intent intent = new Intent(RegisterActivity.this, SignActivity.class);
-                                startActivity(intent);
                                 finish();
                             }
                         }
@@ -175,7 +172,6 @@ public class RegisterActivity extends BaseMvpActivity implements SmsVerifyView.S
                 }
                 break;
             case R.id.register_sign: //去登陆
-                startActivity(new Intent(RegisterActivity.this,SignActivity.class ));
                 finish();
                 break;
         }
