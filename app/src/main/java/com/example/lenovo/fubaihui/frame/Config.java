@@ -16,14 +16,14 @@ public class Config {
      */
     static {
         if (type == 1){//在一种环境下可能有多个服务器
-            BASEURL = "https://bkbapi.dqdgame.com/";
-            BASEURL1 = "http://newwasj.zhangtongdongli.com";
+            BASEURL1 = "http://newwasj.zhangtongdongli.com/";
+            BASEURL = "http://newwasj.zhangtongdongli.com/";
         } else if (type == 2){
-            BASEURL = "http://baidu.com/";
-            BASEURL1 = "http://newwasj.zhangtongdongli.com";
+         BASEURL1 = "http://newwasj.zhangtongdongli.com/";
+            BASEURL = "http://newwasj.zhangtongdongli.com/";
         } else {
-            BASEURL = "http://sina.com/";
-            BASEURL1 = "http://sport-data.dqdgame.com/";
+            BASEURL1 = "http://newwasj.zhangtongdongli.com/";
+            BASEURL = "http://newwasj.zhangtongdongli.com/";
         }
     }
 }
