@@ -1,10 +1,7 @@
 package com.example.lenovo.fubaihui.fragments;
 
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
@@ -24,19 +20,12 @@ import com.example.lenovo.fubaihui.mainactivity.DataActivity;
 import com.example.lenovo.fubaihui.mainactivity.DiscountActivity;
 import com.example.lenovo.fubaihui.mainactivity.FriendActivity;
 import com.example.lenovo.fubaihui.mainactivity.OrderActivity;
+import com.example.lenovo.fubaihui.mainactivity.PhoneActivity;
 import com.example.lenovo.fubaihui.mainactivity.RecommendActivity;
 import com.example.lenovo.fubaihui.mainactivity.RecommendNumActivity;
+import com.example.lenovo.fubaihui.mainactivity.SettingActivity;
 import com.example.lenovo.fubaihui.mainactivity.SettledinActivity;
 import com.example.lenovo.fubaihui.mainactivity.WalletActivity;
-import com.hjq.permissions.OnPermission;
-import com.hjq.permissions.XXPermissions;
-import com.yiyatech.utils.SharedPrefrenceUtils;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,8 +37,7 @@ import butterknife.Unbinder;
  * A simple {@link Fragment} subclass.
  */
 public class MineFragment extends Fragment {
-    private static final String USER = "user";
-    @BindView(R.id.iv_mine_image)
+   @BindView(R.id.iv_mine_image)
    ImageView ivMineImage;
    @BindView(R.id.tv_mine_name)
    TextView tvMineName;
@@ -81,16 +69,10 @@ public class MineFragment extends Fragment {
    TextView llMineWallet;
    @BindView(R.id.ll_mine_order)
    TextView llMineOrder;
-    private String mPhone;
-    private String phonename;
    Unbinder unbinder;
 
-
-    public static MineFragment newInstance() {
-      MineFragment fragment = new MineFragment();
-      Bundle bundle = new Bundle();
-      fragment.setArguments(bundle);
-      return fragment;
+   public MineFragment() {
+      // Required empty public constructor
    }
 
 
@@ -107,47 +89,19 @@ public class MineFragment extends Fragment {
    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
       initView();
-      getPermission();
    }
 
-    private void getPermission() {
-        XXPermissions.with(getActivity())
-                .constantRequest() //可设置被拒绝后继续申请，直到用户授权或者永久拒绝
-                //.permission(Permission.SYSTEM_ALERT_WINDOW, Permission.REQUEST_INSTALL_PACKAGES)
-                // 支持请求 6.0 悬浮窗权限 8.0 请求安装权限
-                .permission(Manifest.permission.CAMERA, Manifest.permission
-                        .CALL_PHONE)
-                //不指定权限则自动获取清单中的危险权限
-                .request(new OnPermission() {
-                    @Override
-                    public void hasPermission(List<String> granted, boolean isAll) {
-                    }
-
-                    @Override
-                    public void noPermission(List<String> denied, boolean quick) {
-                        if (denied.size() != 0) Toast.makeText(getActivity(), "拒绝权限影响您正常使用", Toast.LENGTH_SHORT).show();
-                    }
-                });
-        //XXPermissions.gotoPermissionSettings(this);//跳转到权限设置页面
-    }
-
    private void initView() {
-      EventBus.getDefault().register(this);
       Glide.with(getActivity()).load(R.drawable.ic_fubaihui)
           .circleCrop()
           .into(ivMineImage);
-       String phone = SharedPrefrenceUtils.getString(getContext(), USER);
-       tvMineAccount.setText(phone);
+
    }
 
-   @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-   public void eventBus(String data1){
-      Glide.with(getActivity()).load(data1).circleCrop().into(ivMineImage);
-      SharedPreferences user = getContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
-      SharedPreferences.Editor edit = user.edit();
-      edit.putBoolean("isBoolean",true);
-      edit.putString("path",data1);
-      edit.commit();
+   @Override
+   public void onDestroyView() {
+      super.onDestroyView();
+      unbinder.unbind();
    }
 
    @OnClick({R.id.ll_mine_data, R.id
@@ -156,7 +110,6 @@ public class MineFragment extends Fragment {
        .ll_mine_login, R.id.ll_mine_phone, R.id.ll_mine_friend, R.id.ll_mine_collection, R.id
        .ll_mine_wallet, R.id.ll_mine_order})
    public void onClick(View view) {
-       phonename = tvMineAccount.getText().toString();
       switch (view.getId()) {
          case R.id.ll_mine_data:
             startActivity(new Intent(getActivity(),DataActivity.class));
@@ -165,7 +118,7 @@ public class MineFragment extends Fragment {
             startActivity(new Intent(getActivity(),DiscountActivity.class));
             break;
          case R.id.ll_mine_setting:
-            startActivity(new Intent(getActivity(),DataActivity.class));
+            startActivity(new Intent(getActivity(),SettingActivity.class));
             break;
          case R.id.ll_mine_recommend:
             startActivity(new Intent(getActivity(),RecommendActivity.class));
@@ -183,10 +136,7 @@ public class MineFragment extends Fragment {
             //登录
             break;
          case R.id.ll_mine_phone:
-            Intent intent = new Intent(Intent.ACTION_CALL);
-            Uri data = Uri.parse("tel:" + "18434916114");
-            intent.setData(data);
-            startActivity(intent);
+            startActivity(new Intent(getActivity(),PhoneActivity.class));
             break;
          case R.id.ll_mine_friend:
             startActivity(new Intent(getActivity(),FriendActivity.class));
@@ -202,21 +152,4 @@ public class MineFragment extends Fragment {
             break;
       }
    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        SharedPreferences user = getContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
-        String path = user.getString("path", null);
-        Boolean isBoolean = user.getBoolean("isBoolean",false);
-        if(isBoolean==true){
-            Glide.with(getContext()).load(Uri.parse(path)).circleCrop().into(ivMineImage);
-        }
-    }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-        EventBus.getDefault().unregister(this);
-    }
 }

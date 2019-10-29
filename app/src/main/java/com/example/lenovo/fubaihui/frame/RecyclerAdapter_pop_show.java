@@ -1,4 +1,4 @@
-package com.example.lenovo.fubaihui.adapters;
+package com.example.lenovo.fubaihui.frame;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,9 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lenovo.fubaihui.R;
+import com.example.lenovo.fubaihui.bean.Integral_show;
 
 import java.util.ArrayList;
 
@@ -27,14 +30,14 @@ public class RecyclerAdapter_pop_show extends RecyclerView.Adapter<RecyclerAdapt
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerAdapter_pop_show.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.item_pop_show, null);
         ViewHolder viewHolder=new ViewHolder(inflate);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerAdapter_pop_show.ViewHolder holder, final int position) {
         holder.textView1.setText(list.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

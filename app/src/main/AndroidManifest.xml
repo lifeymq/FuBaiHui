@@ -1,64 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:tools="http://schemas.android.com/tools"
-   package="com.example.lenovo.fubaihui">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.lenovo.fubaihui">
 
-   <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-   <uses-permission android:name="android.permission.INTERNET" />
-   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-   <uses-permission android:name="android.permission.READ_CALENDAR" />
-   <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-   <uses-permission android:name="android.permission.READ_SETTINGS" />
-   <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
-   <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-   <uses-permission android:name="android.permission.VIBRATE" />
-   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-   <uses-permission android:name="android.permission.WAKE_LOCK" />
-   <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-   <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-   <uses-permission android:name="android.permission.GET_TASKS" />
-   <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
-   <uses-permission android:name="android.permission.CLEAR_APP_DATA" />
-   <uses-permission android:name="android.permission.BLUETOOTH" />
-   <!-- 震动权限 -->
-   <uses-permission android:name="android.permission.CAMERA" />
-   <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_DATA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
-   <uses-feature android:name="android.hardware.camera" />
-   <!-- 使用照相机权限 -->
-   <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- 使用照相机权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
-   <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
-   <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
-   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-   <uses-permission android:name="android.permission.READ_LOGS"
-      tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
+    <uses-permission android:name="androimd.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <application
+        android:name=".frame.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+       android:usesCleartextTraffic="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-   <application
-      android:name=".frame.MyApplication"
-      android:allowBackup="true"
-      android:icon="@drawable/ic_fubaihui"
-      android:label="@string/app_name"
-      android:roundIcon="@drawable/ic_fubaihui"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme"
-      android:usesCleartextTraffic="true"
-       tools:ignore="GoogleAppIndexingWarning">
-      <activity android:name=".activity.SignActivity" >
-         <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.ModifyActivity" />
+        <activity android:name=".activity.MerchantActivity" />
         <activity android:name=".activity.MyCaptureActivity" />
         <activity android:name=".activity.QRCodeActivity" />
         <activity android:name=".activity.MemberActivity" />
@@ -67,27 +63,6 @@
         <activity android:name=".activity.IntegralActivity" />
         <activity android:name=".activity.FranchiseeActivity" />
         <activity android:name=".activity.FranchiseeDetailsActivity" />
-        <activity android:name=".activity.FuBaiHuiStoreActivity" />
-        <activity android:name=".mainactivity.DataActivity" />
-        <activity android:name=".mainactivity.DiscountActivity" />
-        <activity android:name=".mainactivity.RecommendActivity" />
-        <activity android:name=".mainactivity.RecommendNumActivity" />
-        <activity android:name=".mainactivity.AddressActivity" />
-        <activity android:name=".mainactivity.WalletActivity" />
-        <activity android:name=".mainactivity.OrderActivity" />
-        <activity android:name=".mainactivity.CollectionActivity" />
-        <activity android:name=".mainactivity.FriendActivity" />
-        <activity android:name=".mainactivity.SettledinActivity" />
-        <activity android:name=".activity.IntegralDetailsActivity" />
-        <activity android:name=".activity.IntegralActivity" />
-        <activity android:name=".activity.StoreParticularsActivity" />
-        <activity android:name=".dataactivity.NumberActivity" />
-        <activity android:name=".dataactivity.NameActivity" />
-        <activity android:name=".dataactivity.AdministrationActivity" />
-        <activity android:name=".dataactivity.OpinionActivity" />
-        <activity android:name=".dataactivity.AboutActivity"/>
-    </application>
-
           <activity android:name=".mainactivity.DataActivity" />
           <activity android:name=".mainactivity.DiscountActivity" />
           <activity android:name=".mainactivity.SettingActivity" />

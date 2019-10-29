@@ -13,7 +13,7 @@ public class FranchiseeModel implements ICommonModel {
       NetManager manager = NetManager.getNetManager();
       switch (whichApi){
          case ApiConfig.GET_FRANCHISEE:
-            manager.method(manager.getNetService(Config.BASEURL).getFranchisee((int) params[0]),whichApi,presenterCallBack);
+            manager.method(manager.getNetService(Config.BASEURL1).getFranchisee((int) params[0]),whichApi,presenterCallBack);
             break;
       }
    }

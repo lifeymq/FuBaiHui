@@ -15,24 +15,24 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
+            android:layout_height="wrap_content"
             android:autofillHints="?attr/actionBarSize"
             android:background="?attr/colorBackgroundFloating"
             android:id="@+id/mytoolbar">
 
             <ImageView
                 android:id="@+id/ivsao"
-                android:layout_width="@dimen/dp_25"
-                android:layout_height="@dimen/dp_25"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
                 android:src="@drawable/saoyisao"
                 />
 
 
             <TextView
                 android:id="@+id/toolbartitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="@dimen/dp_16"
                 android:text="首页"
                 />
@@ -51,7 +51,7 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/mytab"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
+            android:layout_height="wrap_content"
             app:tabSelectedTextColor="#99ff0000"
             app:tabIndicatorColor="@null"
             />
