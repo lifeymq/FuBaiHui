@@ -17,6 +17,7 @@ import com.example.lenovo.fubaihui.R;
 import com.example.lenovo.fubaihui.activity.Fbh_ShopActivity;
 import com.example.lenovo.fubaihui.activity.FranchiseeActivity;
 import com.example.lenovo.fubaihui.activity.Inte_ShopActivity;
+import com.example.lenovo.fubaihui.activity.IntegralActivity;
 import com.example.lenovo.fubaihui.activity.MemberActivity;
 import com.example.lenovo.fubaihui.bean.Home_Choiceness;
 import com.example.lenovo.fubaihui.frame.ApiConfig;
@@ -175,7 +176,7 @@ TextBannerView tvban;
                 startActivity(new Intent(getActivity(), Fbh_ShopActivity.class));
                 break;
             case R.id.mybtnshop2:
-                startActivity(new Intent(getActivity(), Inte_ShopActivity.class));
+                startActivity(new Intent(getActivity(), IntegralActivity.class));
                 break;
             case R.id.mybtnshop3:
                 startActivity(new Intent(getActivity(), MemberActivity.class));

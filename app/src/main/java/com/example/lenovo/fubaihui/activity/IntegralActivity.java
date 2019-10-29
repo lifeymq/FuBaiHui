@@ -224,6 +224,7 @@ public class IntegralActivity extends AppCompatActivity implements ICommonView,R
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setAdapter(recyclerAdapter_pop_show);
         recyclerView.setLayoutManager(layoutManager);
+
         recyclerAdapter_pop_show.setPul(this);
 
     }

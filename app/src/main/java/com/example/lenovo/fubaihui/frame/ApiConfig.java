@@ -33,7 +33,12 @@ public class ApiConfig {
     public static final int GET_FRANCHISEE=21;
 
     public static final int POST_HOME_CHOICENESS=22;
-    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL = 16;
-    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW = 17;
-    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW_POP = 18;
+    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL = 26;
+    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW = 27;
+    public static final int GET_PERSON_RANKING_RESULT_INTEGRAL_SHOW_POP = 28;
+    public static final int POST_SHOW_SHOPPING_CART = 29;
+    public static final int POST_TOKEN = 30;
+    public static final int POST_MODIFY_SHOPPING_CART=31;
+    public static final int POST_DELETE_SHOPPING_CART=32;
+
 }

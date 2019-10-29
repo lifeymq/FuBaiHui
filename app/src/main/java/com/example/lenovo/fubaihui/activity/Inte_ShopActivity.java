@@ -11,5 +11,6 @@ public class Inte_ShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inte__shop);
+
     }
 }

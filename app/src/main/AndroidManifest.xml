@@ -60,6 +60,7 @@
         <activity android:name=".activity.MemberActivity" />
         <activity android:name=".activity.Inte_ShopActivity" />
         <activity android:name=".activity.Fbh_ShopActivity" />
+        <activity android:name=".activity.IntegralActivity" />
         <activity android:name=".activity.FranchiseeActivity" />
         <activity android:name=".activity.FranchiseeDetailsActivity" />
           <activity android:name=".mainactivity.DataActivity" />
@@ -74,8 +75,6 @@
           <activity android:name=".mainactivity.FriendActivity" />
           <activity android:name=".mainactivity.PhoneActivity" />
           <activity android:name=".mainactivity.SettledinActivity"></activity>
-   </application>
         <activity android:name=".activity.IntegralDetailsActivity"></activity>
-    </application>
-
+   </application>
 </manifest>

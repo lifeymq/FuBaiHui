@@ -1,18 +1,23 @@
 package com.example.lenovo.fubaihui.frame;
 
+import com.example.lenovo.fubaihui.bean.Delete_shopping;
 import com.example.lenovo.fubaihui.bean.Integral;
 import com.example.lenovo.fubaihui.bean.Integral_show;
+import com.example.lenovo.fubaihui.bean.Modify_shopping;
+import com.example.lenovo.fubaihui.bean.Shopping_cart;
 import com.example.lenovo.fubaihui.bean.TeamerRankInfo;
 import com.example.lenovo.fubaihui.bean.FranchiseeInfo;
 import com.example.lenovo.fubaihui.bean.Home_Choiceness;
+import com.example.lenovo.fubaihui.bean.Token;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
 
 
 /**
@@ -44,8 +49,22 @@ public interface INetService {
    @POST("APP/Xone/goodslist")
    Observable<Home_Choiceness> getHomeChoiceness();
 
+    //购物车数据展示
+    @POST("APP/Order/cart_list")
+    Observable<Shopping_cart> getshopping_carts(@Body RequestBody body);
 
 
+    //Token
+    @POST("APP/Public/get_token")
+    Observable<Token> gettoken(@Body RequestBody body);
+
+    //修改购物车
+    @POST("APP/Order/cart_goods_setInc")
+    Observable<Modify_shopping> getModify_shopping(@Body RequestBody body);
+
+    //删除购物车
+    @POST("APP/Order/del_good_car")
+    Observable<Delete_shopping> getDelete_shopping(@Body RequestBody body);
 
 
 }
