@@ -1,5 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:background="@color/back_grey"
+   android:orientation="vertical"
+   tools:context="com.example.lenovo.fubaihui.activity.MainActivity">
+
+   <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dp_40"
+      android:background="#11CC11">
+
+      <ImageView
+         android:id="@+id/fish_integral"
+         android:layout_width="@dimen/dp_25"
+         android:layout_height="@dimen/dp_30"
+         android:layout_centerVertical="true"
+         android:src="@drawable/back" />
+
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
+         android:text="银积分商城"
+         android:textColor="#FFF"
+         android:textSize="20sp" />
+   </RelativeLayout>
+
+   <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dp_30"
+      android:layout_gravity="center">
+
+      <LinearLayout
+         android:id="@+id/provinces"
+         android:layout_width="0dp"
+         android:layout_height="@dimen/dp_20"
+         android:layout_marginTop="@dimen/dp_5"
+         android:layout_weight="3">
+
+         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="省份" />
+
+         <TextView
+            android:id="@+id/provincestext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="#B9B0B0" />
+
+         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#B9B0B0"
+            android:src="@drawable/down" />
+      </LinearLayout>
+
+      <LinearLayout
+         android:id="@+id/city"
+         android:layout_width="0dp"
+         android:layout_height="@dimen/dp_20"
+         android:layout_marginTop="@dimen/dp_5"
+         android:layout_weight="3">
+
+         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="城市" />
+
+         <TextView
+            android:id="@+id/citytext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="#B9B0B0" />
+
+         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#B9B0B0"
+            android:src="@drawable/down" />
+      </LinearLayout>
+
+      <LinearLayout
+         android:id="@+id/county"
+         android:layout_width="0dp"
+         android:layout_height="@dimen/dp_20"
+         android:layout_marginTop="@dimen/dp_5"
+         android:layout_weight="3">
+
+         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="区县" />
+
+         <TextView
+            android:id="@+id/countytext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="#B9B0B0" />
+
+         <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#B9B0B0"
+            android:src="@drawable/down" />
+      </LinearLayout>
+
+      <ImageView
+         android:id="@+id/showpopupwindow_img"
+         android:layout_width="0dp"
+         android:layout_height="@dimen/dp_20"
+         android:layout_marginTop="@dimen/dp_5"
+         android:layout_weight="1"
+         android:src="@drawable/xiaoxiquan" />
+   </LinearLayout>
+
+   <android.support.v7.widget.RecyclerView
+      android:id="@+id/rv_integral_show"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#EDECEC"
+      android:divider="#00000000"
+      android:dividerHeight="15dp" />
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

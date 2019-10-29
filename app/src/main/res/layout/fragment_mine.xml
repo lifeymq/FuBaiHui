@@ -2,7 +2,7 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   android:background="@color/gray"
+   android:background="@color/dark_grey"
    android:orientation="vertical"
    tools:context="com.example.lenovo.fubaihui.fragments.MineFragment">
 
@@ -31,7 +31,7 @@
             android:id="@+id/tv_mine_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_10"
             android:text="1111111" />
 
          <TextView
@@ -43,7 +43,6 @@
       </LinearLayout>
 
       <ImageView
-
          android:layout_width="@dimen/dp_20"
          android:layout_height="match_parent"
          android:layout_marginRight="@dimen/dp_5"
@@ -52,7 +51,7 @@
 
    <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="@dimen/dp_320"
+      android:layout_height="@dimen/dp_321"
       android:layout_marginLeft="@dimen/dp_10"
       android:layout_marginRight="@dimen/dp_10"
       android:background="@drawable/rv_item_shape"
@@ -62,22 +61,24 @@
          android:id="@+id/ll_mine_discount"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_9"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/home_my_page_mid_coupon" />
 
          <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/dp_5"
-            android:layout_weight="1"
-            android:text="优惠券"
-            android:textSize="@dimen/sp_15" />
+             android:layout_width="309dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_marginLeft="@dimen/dp_5"
+             android:layout_weight="1"
+             android:text="优惠券"
+             android:textSize="@dimen/sp_15" />
 
          <ImageView
             android:layout_width="@dimen/dp_20"
@@ -90,12 +91,14 @@
          android:id="@+id/ll_mine_setting"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/home_my_page_mid_setting" />
 
          <TextView
@@ -118,12 +121,14 @@
          android:id="@+id/ll_mine_recommend"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/home_my_page_mid_recommend" />
 
          <TextView
@@ -146,12 +151,14 @@
          android:id="@+id/ll_mine_recommend_num"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/home_my_page_mid_referral_code" />
 
          <TextView
@@ -174,12 +181,14 @@
          android:id="@+id/ll_mine_address"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/location" />
 
          <TextView
@@ -202,12 +211,14 @@
          android:id="@+id/ll_mine_settled_in"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/recruitment" />
 
          <TextView
@@ -230,12 +241,14 @@
          android:id="@+id/ll_mine_login"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/recruitment" />
 
          <TextView
@@ -258,12 +271,14 @@
          android:id="@+id/ll_mine_phone"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/dp_5"
+          android:layout_marginRight="@dimen/dp_5"
+          android:layout_marginLeft="@dimen/dp_5"
+          android:layout_marginTop="@dimen/dp_20"
          android:orientation="horizontal">
 
          <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:src="@drawable/platform_hotline" />
 
          <TextView
@@ -286,7 +301,7 @@
    <LinearLayout
 
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="100dp"
       android:layout_marginLeft="@dimen/dp_10"
       android:layout_marginTop="@dimen/dp_20"
       android:layout_marginRight="@dimen/dp_10"
@@ -297,8 +312,9 @@
          android:id="@+id/ll_mine_friend"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="@dimen/dp_5"
+         android:layout_marginTop="@dimen/dp_14"
          android:layout_weight="1"
+          android:textColor="@color/red"
          android:drawableTop="@drawable/home_my_page_bottom_my_friends"
          android:gravity="center"
          android:text="我的好友" />
@@ -307,8 +323,9 @@
          android:id="@+id/ll_mine_collection"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="@dimen/dp_5"
+         android:layout_marginTop="@dimen/dp_14"
          android:layout_weight="1"
+          android:textColor="@color/red"
          android:drawableTop="@drawable/home_my_page_bottom_my_collection"
          android:gravity="center"
          android:text="我的收藏" />
@@ -317,8 +334,9 @@
          android:id="@+id/ll_mine_wallet"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="@dimen/dp_5"
+         android:layout_marginTop="@dimen/dp_14"
          android:layout_weight="1"
+          android:textColor="@color/red"
          android:drawableTop="@drawable/home_my_page_bottom_my_money_packge"
          android:gravity="center"
          android:text="我的钱包" />
@@ -327,11 +345,21 @@
          android:id="@+id/ll_mine_order"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="@dimen/dp_5"
+         android:layout_marginTop="@dimen/dp_14"
          android:layout_weight="1"
+          android:textColor="@color/red"
          android:drawableTop="@drawable/home_my_page_bottom_my_cargo"
          android:gravity="center"
          android:text="我的订单" />
    </LinearLayout>
+
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginTop="@dimen/dp_40"
+       android:textSize="@dimen/sp_17"
+       android:text="————————没有更多内容了————————"
+       android:layout_height="wrap_content" />
 
 </LinearLayout>
